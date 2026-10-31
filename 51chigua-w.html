@@ -93,8 +93,8 @@ function playEpisode(e){episode=e;elapsed=0;collectionMode=true;page='video';pla
 function openEpisodes(){showSheet('雄霸商圈',`<div class="auto-next"><span>自动播放下一集</span><input type="checkbox" aria-label="自动播放下一集" ${autoNext?'checked':''} onchange="autoNext=this.checked"></div><div class="episodes-heading"><span>更新至第100集</span><span>当前第 ${episode} 集</span></div><div class="episode-grid">${Array.from({length:100},(_,i)=>`<button class="episode-choice ${episode===i+1?'current':''}" onclick="playEpisode(${i+1})">${i+1}</button>`).join('')}</div><div class="episode-bar"><span>无剧集视频源时为 12 秒进度演示</span><button onclick="nextEpisode()">下一集 ›</button></div>`)}
 function nextEpisode(){if(episode>=100){playing=false;syncPlay();closeSheet();toast('已播放至合集最后一集');return}playEpisode(episode+1)}
 function endedEpisode(){if(autoNext){nextEpisode()}else{playing=false;elapsed=0;syncPlay();toast('本集播放结束')}}
-function moreVideo(){showSheet('更多',`<p class="more-share-title">分享给好友</p><div class="more-friends"><button onclick="toast('已选择好友：冷傲（分享演示）')"><img src="${shareAvatars[0]}" alt="冷傲头像"><span>冷傲</span></button><button onclick="toast('已选择好友：娱圈观众（分享演示）')"><img src="${shareAvatars[1]}" alt="娱圈观众头像"><span>娱圈观…</span></button></div><p class="more-speed-label">倍数</p><div class="more-speeds">${[.75,1,1.25,1.5,2,3].map(s=>`<button class="speed ${speed===s?'selected':''}" aria-pressed="${speed===s}" onclick="setSpeed(${s},this)">${s}</button>`).join('')}</div><div class="more-quality">清晰度<span>高清</span></div><div class="danmaku-setting"><span>弹幕</span><button class="danmaku-switch" role="switch" aria-label="弹幕开关" aria-checked="${danmakuEnabled}" onclick="toggleDanmaku(this)"></button></div><button class="sheet-row" onclick="closeSheet();returnToVideoFeed();toast('已减少此类视频推荐')">不看该视频<span>⊘</span></button><button class="sheet-row" onclick="reportVideo()">举报<span>⚠</span></button>`);document.getElementById('overlay').querySelector('.sheet').classList.add('more-sheet')}
-function setSpeed(s,b){speed=s;const v=document.getElementById('player');if(v)v.playbackRate=s;document.querySelectorAll('.more-speeds .speed').forEach(el=>{el.classList.toggle('selected',el===b);el.setAttribute('aria-pressed',el===b)});document.getElementById('rateLabel').textContent=s+'× · 高清';toast('已切换为 '+s+'× 倍速')}
+function moreVideo(){showSheet('更多',`<p class="more-share-title">分享给好友</p><div class="more-friends"><button onclick="toast('已选择好友：冷傲（分享演示）')"><img src="${shareAvatars[0]}" alt="冷傲头像"><span>冷傲</span></button><button onclick="toast('已选择好友：娱圈观众（分享演示）')"><img src="${shareAvatars[1]}" alt="娱圈观众头像"><span>娱圈观…</span></button></div><p class="more-speed-label">倍数</p><div class="more-speeds">${[.75,1,1.25,1.5,2,3].map(s=>`<button class="speed ${speed===s?'selected':''}" aria-pressed="${speed===s}" onclick="setSpeed(${s},this)">${s}</button>`).join('')}</div><div class="more-quality">清晰度<span>默认高清</span></div><div class="danmaku-setting"><span>弹幕</span><button class="danmaku-switch" role="switch" aria-label="弹幕开关" aria-checked="${danmakuEnabled}" onclick="toggleDanmaku(this)"></button></div><button class="sheet-row" onclick="closeSheet();returnToVideoFeed();toast('已减少此类视频推荐')">不看该视频<span>⊘</span></button><button class="sheet-row" onclick="reportVideo()">举报<span>⚠</span></button>`);document.getElementById('overlay').querySelector('.sheet').classList.add('more-sheet')}
+function setSpeed(s,b){speed=s;const v=document.getElementById('player');if(v)v.playbackRate=s;document.querySelectorAll('.more-speeds .speed').forEach(el=>{el.classList.toggle('selected',el===b);el.setAttribute('aria-pressed',el===b)});document.getElementById('rateLabel').textContent=s+'× · 默认高清';toast('已切换为 '+s+'× 倍速')}
 function reportVideo(){showSheet('举报视频','<p class="subtle">选择举报原因（演示，不会提交到服务器）</p>'+['内容不实','侵犯隐私','其他问题'].map(t=>`<button class="sheet-row" onclick="closeSheet();toast('已记录举报原因：${t}（演示）')">${t}<span>›</span></button>`).join(''))}
 function simple(){return `${masthead()}<div class="scroll"><div class="empty">${page==='chat'?icon('chat'):icon('user')}<h3>${page==='chat'?'消息通知':'我的空间'}</h3><p>暂无${page==='chat'?'新消息':'个人动态'}</p><button class="pink" onclick="go('community')">去社区逛逛</button></div></div>`}
 function readArticle(i){showSheet('内容详情',`<span class="tag">${news[i][1]}</span><h3 class="modal-title" style="margin-top:15px">${news[i][0]}</h3><div class="cover">${art()}</div><p class="dialog-content">在忙碌的日常里，留一点时间给自己。发现身边的小美好，记录那些值得分享的瞬间。</p><button class="pink" onclick="go('community')">去社区聊聊</button>`)}
@@ -107,14 +107,38 @@ async function shareLink(){try{if(location.protocol==='file:')return toast('本�
 setInterval(()=>{if(page!=='video'||!playing||app.classList.contains('hidden'))return;advanceDanmaku(.25);const v=document.getElementById('player');let total=demoDuration;if(videoUrl){elapsed=v.currentTime;total=v.duration||demoDuration}else{elapsed+=speed*.25;if(elapsed>=demoDuration){endedEpisode();return}}document.getElementById('progressFill').style.width=(elapsed/total*100)+'%';document.getElementById('videoTime').textContent=fmt(elapsed)+' / '+fmt(total)},250);
 function fmt(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(Math.floor(n%60)).padStart(2,'0')}
 const requirements=[
-['热点','点击横向 Tab 后，当前选中项自动滚动至可视区域中间。当 Tab 数量较多或选中项位于边缘时，选中状态需清晰突出；若存在二级分类，完整显示。'],
-['发布','发布时必填内容未填写，点击“发布”应有明确反馈：必填项标红并显示原因，补全后才支持发布。发布按钮增强视觉识别。话题为必填，至少选择 1 个、最多 3 个；未选择时发布需标红话题并提示“请至少选择 1 个话题”，选择后即时解除错误，全部必填项通过后才能发布。'],
-['搜索页面','总榜与热榜数据重复，去除热榜，只保留总榜。'],
-['搜索 / 搜索结果','搜索页面以及搜索结果页面，将“发帖”分类文字修改为“社区”。'],
-['视频','播放页使用 9:16 竖屏封面，更多面板提供播放倍数选项，支持 0.75、1、1.25、1.5、2、3 倍速，单行显示；清晰度仅显示“高清”。'],
-['视频更多','更多菜单保留分享给好友、不看该视频、举报，增加单行倍数与高清设置，移除多余选项。弹幕通过更多面板内的开关控制。'],
-['视频合集列表','点击头像进入个人中心；点击合集或单集进入合集播放，支持选集与自动播放下一集；合集播放详情返回视频页面。'],
-['播放页弹幕','播放页增加弹幕，在“更多”面板中控制开启和关闭，默认关闭。弹幕按当前剧集获取，按评论发表时间倒序，在播放页顶部两条轨道从右向左滚动；采用半透明黑色椭圆底，暂停时同步暂停，切集后清除上一集弹幕并切换到当前集。']
+  [
+    "热点",
+    "点击横向 Tab 后，当前选中项自动滚动至可视区域中间。当 Tab 数量较多或选中项位于边缘时，选中状态需清晰突出；若存在二级分类，完整显示。"
+  ],
+  [
+    "发布",
+    "发布时必填内容未填写，点击“发布”应有明确反馈：必填项标红并显示原因，补全后才支持发布。发布按钮增强视觉识别。话题为必填，至少选择 1 个、最多 3 个；未选择时发布需标红话题并提示“请至少选择 1 个话题”，选择后即时解除错误，全部必填项通过后才能发布。"
+  ],
+  [
+    "搜索页面",
+    "总榜与热榜数据重复，去除热榜，只保留总榜。"
+  ],
+  [
+    "搜索 / 搜索结果",
+    "搜索页面以及搜索结果页面，将“发帖”分类文字修改为“社区”。"
+  ],
+  [
+    "视频",
+    "合集播放详情页面也增加更多入口。"
+  ],
+  [
+    "视频更多",
+    "更多面板新增：倍数选择、清晰度默认高清、弹幕开关。"
+  ],
+  [
+    "视频合集列表",
+    "点击头像进入个人中心；点击合集或单集进入合集播放，支持选集与自动播放下一集。"
+  ],
+  [
+    "播放页弹幕",
+    "播放页增加弹幕，在“更多”面板中控制开启和关闭，默认关闭。弹幕按当前剧集获取，按评论发表时间倒序，在播放页顶部两条轨道从右向左滚动；采用半透明黑色椭圆底，暂停时同步暂停，切集后清除上一集弹幕并切换到当前集。"
+  ]
 ];
 function switchView(view){if(page==='compose')capture();const isApp=view==='app';app.classList.toggle('hidden',!isApp);document.getElementById('reviewList').classList.toggle('hidden',isApp);document.getElementById('appView').classList.toggle('selected',isApp);document.getElementById('listView').classList.toggle('selected',!isApp);if(!isApp&&playing){playing=false;document.getElementById('player')?.pause();syncPlay()}}
 function renderChecklist(){document.getElementById('reviewList').innerHTML=`<div class="list-intro"><div><h1>PRD · 产品优化清单</h1><p>51吃瓜 · 交互与体验优化 · iPhone 16 Pro 适配</p></div><span>${requirements.length} 项优化</span></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>功能模块</th><th>需求说明</th></tr></thead><tbody>${requirements.map((r,i)=>`<tr><td>${i+1}</td><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</tbody></table></div><div class="list-foot">评估尺寸：402 × 874 CSS px。视频素材取自提供的参考截图；未接入剧集源时，以 12 秒进度演示自动续播。</div>`}
