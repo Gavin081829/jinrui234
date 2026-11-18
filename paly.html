@@ -260,51 +260,29 @@ body.long-bili.h5 [data-menu=more] .component-popover .item{min-height:40px}
 .review .review-detail h3{margin:0 0 6px;font-size:15px}
 .review .review-detail p{margin:5px 0;color:#c2c2cc}
 .review .review-detail ul{padding-left:18px;margin:6px 0;color:#c2c2cc}
-</style>
-<header><strong><b>51</b> 吃瓜 <span class="muted"> / 播放器实验室</span></strong><div class="page-tabs" role="tablist" aria-label="页面"><button id="demoTab" type="button" role="tab" aria-controls="demoView" aria-selected="true" class="on">交互 Demo</button><button id="prdTab" type="button" role="tab" aria-controls="prdView" aria-selected="false" tabindex="-1">产品方案 PRD</button></div><nav id="demoNav" aria-label="预览切换"><div class="group"><button data-view="long">长视频</button><button data-view="short">短视频</button></div><div class="group"><button data-device="web">Web</button><button data-device="h5">H5</button></div></nav></header>
+body.long-bili [data-menu=more] .setting-switch{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;border-radius:3px;background:transparent;padding:8px 2px;min-height:34px;font-size:12px}body.long-bili [data-menu=more] .setting-switch:hover{background:#ffffff12}body.long-bili [data-menu=more] .setting-switch::after{content:"";width:28px;height:16px;border-radius:12px;background:radial-gradient(circle at 8px 8px,#fff 0 6px,transparent 6.5px),#777;transition:background .15s}body.long-bili [data-menu=more] .setting-switch[aria-checked=true]::after{background:radial-gradient(circle at 20px 8px,#fff 0 6px,transparent 6.5px),#ff4f87}body.long-bili [data-menu=more] .setting-switch>span:last-child:not(:first-child){display:none}</style>
+<header><strong><b>51av</b> <span class="muted"> / 播放器实验室</span></strong><div class="page-tabs" role="tablist" aria-label="页面"><button id="demoTab" type="button" role="tab" aria-controls="demoView" aria-selected="true" class="on">交互 Demo</button><button id="prdTab" type="button" role="tab" aria-controls="prdView" aria-selected="false" tabindex="-1">优化对比 PRD</button></div><nav id="demoNav" aria-label="预览切换"><div class="group"><button data-device="web">Web</button><button data-device="h5">H5</button></div></nav></header>
 <main class="layout" id="demoView" role="tabpanel" aria-labelledby="demoTab"><section class="stage"><div class="eyebrow" id="eyebrow"></div><h1 class="heading" id="heading"></h1><div class="article"><span class="eyebrow">影像专栏 / 原创测试</span><h2>上传视频 · 播放示例</h2><p>使用上传视频体验播放、倍速、画质与线路切换。</p></div><div id="wrap"><div id="frame" class="frame" tabindex="0" aria-label="播放器"><video id="video" playsinline preload="auto"></video><canvas class="freeze" id="freeze" hidden></canvas><div id="bullets" class="bullets" hidden><span style="--d:-2s">这段配色很舒服　　慢慢看</span><span style="--d:-5s">流动的光线　　原来是测试短片</span></div><div class="subtitle" id="subtitle" hidden></div><div class="center" id="center"></div><div class="chrome top" id="top"></div><div class="chrome bottom" id="bottom"><div id="caption" class="caption" hidden></div><div id="seek" class="seek" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0"><div class="rail"></div><div class="buffer" id="buffer"></div><div class="fill" id="fill"></div><div class="limit" id="limit" hidden></div><div class="tip" id="tip" hidden></div></div><div class="short-footer" id="shortFooter" hidden></div><div class="row" id="row"></div></div><div id="wheelHint" class="wheel-hint" hidden><svg viewBox="0 0 32 44" fill="none" aria-hidden="true"><path d="m12 6 4-4 4 4m-8 32 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="7" y="10" width="18" height="24" rx="9" stroke="currentColor" stroke-width="1.6"/><path d="M16 15v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>滚轮换剧</span></div><div id="shortRail" class="short-rail" hidden></div><div id="notice" class="notice" role="status" hidden></div><div id="primaryLayer"></div><div id="menuLayer"></div></div><div id="arrows" class="arrows"></div><div id="biliDanmu" class="bili-danmu" hidden></div></div><div class="article"><p>点击观看原创都市短剧分镜，拖动进度条可定位到不同时间点。</p></div><p class="meta" id="meta"></p></section>
 <aside class="sidebar" aria-label="测试台"><details class="lab" id="lab"><summary>测试台 <span class="muted"> · 模拟环境</span></summary><div class="labbody">
 <label>长视频布局<select id="longLayout"><option value="web">Web 页内</option><option value="webfull">Web 全屏</option><option value="h5">H5 竖屏</option><option value="h5full">H5 横屏影院</option></select></label><label>身份<select id="identity"><option value="guest">游客</option><option value="user">普通用户</option><option value="vip">VIP</option><option value="rich">金币充足</option><option value="poor">金币不足</option></select></label>
 <label>当前内容权益<select id="rights"><option value="free">免费</option><option value="vip">VIP · 15 秒试看</option><option value="coin">金币 · 15 秒试看</option></select></label>
-<label>广告配置<select id="ads"><option value="none">无广告</option><option value="pre">长视频前贴片</option><option value="pause">长视频暂停广告</option><option value="feed">短视频流内广告</option></select></label>
+<label>广告配置<select id="ads"><option value="pre">片头广告 · 8 秒不可跳过</option><option value="none">无广告（测试）</option><option value="pause">长视频暂停广告</option></select></label>
 <label>注入故障<select id="fault"><option value="first">首帧超时 · 5 秒</option><option value="stall">播放卡顿 · 3 秒</option><option value="expired">地址过期</option><option value="offline">断网</option><option value="decode">解码失败</option><option value="all">全部线路失败</option><option value="down">内容下线</option><option value="badB">手动线路 B 失败</option><option value="version">线路 C 版本不同</option><option value="feedback">下次反馈提交失败</option></select></label>
 <div class="actions"><button data-act="inject" class="primary">注入</button><button data-act="online">恢复网络</button><button data-act="at">定位 01:26</button><button data-act="reset">重置</button></div>
 <label style="margin-top:12px">事件日志 · 按反馈编号检索<input id="query" type="search" placeholder="例如 FB-…"></label><div class="logs" id="logs"></div></div></details></aside>
 </main>
 
+
 <main id="prdView" class="review" role="tabpanel" aria-labelledby="prdTab" hidden>
-<div class="review-kicker">51 吃瓜 / 产品评审</div>
-<h1>播放器组件方案</h1>
-<p class="review-summary">长视频帮助用户连续观看和准确定位，短视频帮助用户快速找剧。两套控制层共用线路恢复、观看权益和反馈逻辑。</p>
-<div class="review-status"><span>当前组件说明</span><span>Web / H5</span><span>长视频 / 短视频</span><span>2026.11.18 更新</span></div>
-<div class="review-pair"><article><span class="review-kicker">长视频</span><h2>看得连续，操作可预期</h2><p>重点保障进度定位、倍速、换线续播和权益解锁。H5 通过画板内影院模式演示竖屏与横屏。</p></article><article><span class="review-kicker">短视频</span><h2>快速浏览，随时互动</h2><p>上下滑动或滚轮切换不同剧，选集定位同剧的分段。观看过程中可打开评论、点赞和收藏。</p></article></div>
-<h2 class="review-section">一、四种观看视图</h2>
-<div class="review-table-wrap"><table><thead><tr><th>使用状态</th><th>操作入口</th><th>设计重点</th></tr></thead><tbody>
-<tr><th>Web 长视频</th><td>底栏播放、下一集、±10 秒、音量、时间、倍速、线路、齿轮设置、画中画、全屏。</td><td>进度条独立一行。播放中约 3 秒无操作收起控件，暂停或打开菜单时保留。</td></tr>
-<tr><th>H5 长视频</th><td>页内保留播放、时间、倍速、设置、画中画与全屏。影院内增加 ±10 秒、弹幕和音量。</td><td>全屏在当前预览画板内展开，点击旋转入口模拟横屏。时间与主要操作位于底栏。</td></tr>
-<tr><th>Web 短视频</th><td>宽幅舞台内居中竖屏视频，滚轮换剧。底栏提供倍速、连播、清屏、音量和全屏。</td><td>右侧展示点赞、收藏和评论。评论从右侧展开，左侧画面、标题与控件继续可用。</td></tr>
-<tr><th>H5 短视频</th><td>上滑下一部，下滑上一部。顶部返回、集数、倍速与更多，底部选集、进度及全屏。</td><td>右侧实心图标展示互动计数，音量放在评论下方。长按画面右侧临时 2×。</td></tr>
-</tbody></table></div>
-<h2 class="review-section">二、长视频播放设置</h2>
-<div class="review-detail"><h3>倍速独立，其他设置从齿轮进入</h3><p>1× 时显示「倍速」，调整后显示当前值。支持 0.5×、0.75×、1×、1.25×、1.5×、2×，选中后立即生效并关闭菜单。</p><p>齿轮直接展开六项紧凑菜单，使用半透明深色背景。列表展示当前值，清晰度只从这里进入。</p>
-<ul><li>清晰度按线路能力展示自动、1080P、720P、480P。单一固定画质隐藏入口。</li><li>播放线路展示自动推荐及 A / B / C 的当前、可用和故障状态。</li><li>开启声音或静音根据当前状态切换。音量图标展开竖向滑杆。</li><li>字幕展示开关状态，播放尺寸可选适应画面或填满画面。</li><li>播放反馈进入问题表单，自动关联当前内容和播放会话。</li></ul><p>弹窗保持在播放器范围内，点击外部关闭。当前长视频界面不展示底部弹幕发送区、锁屏或设置内选集。画中画按浏览器能力启用。</p></div>
-<h2 class="review-section">三、长短视频的交互区别</h2>
-<div class="review-table-wrap"><table><thead><tr><th>维度</th><th>长视频</th><th>短视频</th></tr></thead><tbody>
-<tr><th>切换内容</th><td>围绕当前内容定位和继续播放。有下一集时提供续播入口。</td><td>滚轮或上下滑切换不同剧，停止旧视频，并取消旧恢复任务。</td></tr>
-<tr><th>进度与加速</th><td>点击或拖动进度定位，±10 秒停在起止或试看边界。倍速独立展示。</td><td>进度条拖动与滑动换剧分开识别。长按临时加速，松手或取消后恢复原倍速。</td></tr>
-<tr><th>评论</th><td>主要操作集中在播放控制与设置。</td><td>每部剧预置 20 条评论。Web 右侧面板，H5 视频缩至上方、评论从底部展开。</td></tr>
-<tr><th>广告</th><td>8 秒前贴片，5 秒后可跳过。支持可关闭暂停广告。</td><td>独立竖屏广告卡进入推荐流，可滑走。</td></tr>
-<tr><th>异常时离开</th><td>优先恢复当前视频，保持进度和播放偏好。</td><td>用户可继续换剧，迟到的旧请求不能覆盖新画面或声音。</td></tr>
-</tbody></table></div>
-<div class="review-detail"><h3>评论与互动</h3><p>点赞和收藏选中后变为品牌粉，计数同步变化。评论支持热门 / 最新、头像昵称、时间、VIP 头像框、点赞和回复。输入栏固定底部，支持表情，新评论显示「审核中（模拟）」。列表隐藏滚动条并保留滚轮与触摸滑动，× 关闭面板。</p><p>H5 选集展示「正在播放第 X 集」，当前样片按 00:00、00:08、00:16 分为三个预览段。</p></div>
-<h2 class="review-section">四、观看权益与续播边界</h2>
-<div class="review-detail"><ul><li>免费内容直接播放，配置前贴片时先完成或跳过广告。已完成广告在当前会话换线或切全屏后不重播。</li><li>VIP 与金币内容提供 15 秒试看。到达边界定格并显示对应解锁入口，拖动、换线和全屏不能越过边界。</li><li>VIP 生效后从试看断点继续。游客先模拟登录，再完成开通。</li><li>金币视频每条 30 金币，先确认后扣减。余额不足时模拟充值 30 金币，返回后重新确认解锁，重复操作不重复扣费。</li><li>VIP 身份可看 VIP 内容，金币内容仍按单条购买状态判断。</li></ul></div>
-<h2 class="review-section">五、线路恢复与反馈</h2>
-<div class="review-detail"><p>手动切线以最后一次选择为准，新线路可播放并定位后更新当前线路。失败时尝试回到原可用线路，保留进度、倍速、静音及权益。</p><ul><li>首帧等待 5 秒后尝试备用线路。卡顿等待 3 秒后先降画质，再尝试换线。</li><li>地址过期先刷新地址，解码异常先尝试兼容模式。断网时暂停自动恢复，联网后重连。</li><li>同轮每条候选线路最多尝试一次，全部失败后展示重试、换线路与反馈。内容下线停止恢复。</li><li>反馈支持问题类型与补充说明，附带视频 ID、进度、线路、画质、错误码及会话。成功后反馈编号可在测试台检索本次事件。</li></ul></div>
-<h2 class="review-section">六、评审演示顺序</h2>
-<ol class="review-checks"><li><strong>控制与设置</strong><span>依次切换 Web、H5 页内和影院模式，体验 1.5×、齿轮清晰度、音量、画中画与退出。</span></li><li><strong>异常恢复</strong><span>定位 01:26 后注入故障，观察实际暂停、加载和定位，确认续播与倍速保留。</span></li><li><strong>权益边界</strong><span>切换 VIP 或金币场景，试看结束后解锁续播，验证充值返回后仍需确认扣币。</span></li><li><strong>短视频互动</strong><span>换线期间换剧，打开评论查看双端布局，发送表情或回复，再关闭返回观看。</span></li></ol>
-<h2 class="review-section">七、当前原型范围</h2>
-<p class="review-foot">长视频使用上传素材，压缩后实际时间轴约 3 分 36 秒，原文件容器标注约 3 分 48 秒。短视频为三段 AI 都市短剧动态分镜。视频播放、拖动、倍速、音量实际可操作；线路可用性、画质档位、广告、会员、金币和反馈服务均为模拟。画质切换不代表真实分辨率转码，评论审核、VIP 头像框与互动计数均为演示数据。H5 横屏采用画板模拟，画中画和系统全屏取决于浏览器。两小时时间码已支持格式展示，尚未完成真实两小时内容验收。</p>
+<div class="review-kicker">51av / 产品评审</div><h1>播放器优化对比</h1>
+<p class="review-summary">让常用操作更直接，播放异常有处理入口。</p>
+<div class="review-pair"><article><span class="review-kicker">现在的播放器</span><h2>基础观看</h2><p>播放／暂停、音量、当前时长／总时长、播放设置和全屏。设置包含倍速、循环，清晰度默认高清。</p></article><article><span class="review-kicker">优化后的播放器</span><h2>操作与恢复更方便</h2><p>倍速独立展示，增加快退快进、线路切换、画中画和反馈，统一 Web 与 H5 的操作入口。</p></article></div>
+<h2 class="review-section">功能对比</h2>
+<div class="review-table-wrap"><table><thead><tr><th>功能</th><th>现在的 51av</th><th>优化后</th></tr></thead><tbody><tr><th>播放／暂停</th><td>支持。</td><td>播放中自动收起控件，暂停或操作时显示。</td></tr><tr><th>音量</th><td>提供音量控制。</td><td>点击图标展开竖向滑杆，显示音量值。</td></tr><tr><th>时长与进度</th><td>显示当前时长／总时长。</td><td>分层显示播放与缓冲进度，支持拖动定位。</td></tr><tr><th>倍速</th><td>放在播放设置内。</td><td>独立放在控制栏，调整后显示当前倍速。</td></tr><tr><th>清晰度</th><td>默认高清。</td><td>默认高清。</td></tr><tr><th>播放线路</th><td>未体现独立入口。</td><td>展示当前线路，支持换线和故障续播。</td></tr><tr><th>快退／快进</th><td>未体现独立入口。</td><td>提供 ±10 秒按钮，方便快速回看。</td></tr><tr><th>全屏／画中画</th><td>支持全屏。</td><td>支持全屏，新增画中画入口。</td></tr><tr><th>播放设置</th><td>包含倍速、循环。</td><td>提供循环播放、清晰度、线路、声音、字幕、播放尺寸和反馈。</td></tr><tr><th>播放异常</th><td>未体现处理流程。</td><td>按问题展示重试、换线或反馈入口。</td></tr><tr><th>广告</th><td>按统一广告规则执行。</td><td>点击播放后读秒，完成后进入正片，不允许跳过。</td></tr></tbody></table></div>
+<h2 class="review-section">核心规则</h2>
+<div class="review-detail"><h3>广告读秒完成后播放正片</h3><p>广告期间正片暂停，不提供跳过。同次观看已完成的广告在换线或进出全屏后不重播。</p></div>
+<div class="review-detail"><h3>换线保留观看状态</h3><p>保留当前进度、倍速、音量和播放／暂停状态。恢复失败后提供重试、换线和反馈。</p></div>
+<p class="review-foot">现有能力按提供的信息整理，「未体现」项待现网核对。</p>
 </main>
 <script>
 const $=id=>document.getElementById(id), video=$('video'), frame=$('frame');
@@ -320,7 +298,7 @@ const qualities={A:[1080,720,480],B:[720,480],C:[1080,480]};
 const issues=['无法播放','频繁卡顿','黑屏有声','音画不同步','内容错误','广告异常','其他'];
 const titles=['上传视频 · 播放示例','霓虹之后','一纸反转','晨光合约'];
 const stories=['消失三年的前任，突然出现在她的交接会议。','她收到了一份署着自己名字的匿名合同。','一场酒店会面，让她找到了被藏起的真相。','新合伙人递来的文件，竟是她三年前的计划。'];
-let view='long',device='web',episode=3,index=0,immersive=false,locked=false,clean=false,menu='',identity='guest',balance=0,ads='none',offline=false,feedbackFail=false;
+let view='long',device='web',episode=3,index=0,immersive=false,locked=false,clean=false,menu='',identity='guest',balance=0,ads='pre',offline=false,feedbackFail=false;
 let sessions=new Map(),events=[],feedbackLinks=new Map(),sequence=0,operation=0,s,visibleUntil=0,noticeId=0,drag=null,gesture=null,temporary=false,adTimer=0,nextTimer=0,singleTap=0,feedback=null;
 function makeSession(id){let saved=0;try{saved=Number(localStorage.getItem('lab:'+id))||0}catch{}return {id,key:'S'+Date.now().toString(36)+'-'+(++sequence),time:saved,duration:view==='long'?100:24,kind:'free',owned:false,rate:1,muted:true,volume:.75,line:'A',quality:1080,encoding:'标准',auto:true,phase:'idle',want:false,pre:false,tries:[],bad:new Set(),fault:'',first:false,sub:false,danmu:false,error:'',adStart:0,nextAt:0};}
 function log(result,entry=s){events.unshift({stamp:new Date().toLocaleTimeString('zh-CN'),id:entry.id,key:entry.key,time:format(entry.time),line:entry.line,result});renderLogs();}
@@ -365,7 +343,7 @@ function start(){
  if(s.bad.has(s.line)){s.want=true;recover('retry');return}
  playContent();
 }
-function finishAd(skip){if(s.phase!=='ad'||(skip&&Date.now()-s.adStart<5000))return;clearInterval(adTimer);s.adStart=0;s.pre=true;s.phase='pause';log(skip?'广告跳过':'广告播完');start();}
+function finishAd(skip){if(s.phase!=='ad'||skip||Date.now()-s.adStart<8000)return;clearInterval(adTimer);s.adStart=0;s.pre=true;s.phase='pause';log('广告读秒完成');start();}
 function toggle(){if(s.phase==='play'){s.want=false;video.pause();s.phase=view==='long'&&ads==='pause'?'pauseAd':'pause';save();draw()}else start();}
 function snapshot(){if(!$('freeze').hidden||!video.videoWidth||video.readyState<2)return;const canvas=$('freeze');canvas.width=video.videoWidth;canvas.height=video.videoHeight;canvas.getContext('2d').drawImage(video,0,0);canvas.hidden=false;}
 function mediaEvent(event,signal,ready){return new Promise((resolve,reject)=>{
@@ -526,7 +504,7 @@ function drawLongBili(mobile,theater,compact){
  if(compact){
   $('row').innerHTML=play+time+'<i class="spacer"></i>'+speed+more+b('pip','画中画','pip')+b('full','全屏','full');
  }else if(mobile){
-  $('row').innerHTML=play+b('rewind','后退10秒','rewind')+b('forward','前进10秒','forward')+time+'<i class="spacer"></i>'+b('danmu',s.danmu?'弹幕开':'弹幕关','danmu')+speed+b('volume','音量',s.muted?'mute':'sound')+more+b('pip','画中画','pip')+b('full','退出全屏','full');
+  $('row').innerHTML=play+b('rewind','后退10秒','rewind')+b('forward','前进10秒','forward')+b('volume','音量',s.muted?'mute':'sound')+time+'<i class="spacer"></i>'+b('danmu',s.danmu?'弹幕开':'弹幕关','danmu')+speed+more+b('pip','画中画','pip')+b('full','退出全屏','full');
  }else{
   $('row').innerHTML=play+(episode<4?b('nextep','下一集','nextEpisode'):'')+b('rewind','后退10秒','rewind')+b('forward','前进10秒','forward')+
   b('volume',s.muted?'音量 · 已静音':'音量',s.muted?'mute':'sound')+time+'<i class="spacer"></i>'+speed+
@@ -552,7 +530,7 @@ function drawLayers(){
  const p=s.phase;let html='';
  if(p==='ad'){
   let elapsed=(Date.now()-s.adStart)/1000;
-  html='<div class="overlay ad"><span class="admark">广告 · 模拟</span><div class="adskip">'+(elapsed>=5?b('skipad','跳过广告'):'广告 · '+Math.ceil(5-elapsed)+' 秒后可跳过')+'</div><div class="adbrand"><small>51 STUDIO / '+Math.max(0,Math.ceil(8-elapsed))+'s</small><strong>为好故事留一点时间</strong></div><div class="adtools">'+b('volume',s.muted?'取消静音':'静音',s.muted?'mute':'sound')+b('full',immersive||document.fullscreenElement?'退出全屏':'全屏','full')+'</div></div>';
+  html='<div class="overlay ad"><span class="admark">广告 · 模拟</span><div class="adskip">'+('广告 '+String(Math.max(0,Math.ceil(8-elapsed))).padStart(2,'0')+' 秒')+'</div><div class="adbrand"><small>51 STUDIO / '+Math.max(0,Math.ceil(8-elapsed))+'s</small><strong>为好故事留一点时间</strong></div><div class="adtools">'+b('volume',s.muted?'取消静音':'静音',s.muted?'mute':'sound')+b('full',immersive||document.fullscreenElement?'退出全屏':'全屏','full')+'</div></div>';
  }else if(p==='feed')html='<div class="overlay ad" style="pointer-events:none"><span class="admark">广告 · 模拟</span><div class="adbrand"><small>51 STUDIO</small><strong>光影放映计划</strong><p>上滑看下一条</p></div></div>';
  else if(p==='pauseAd')html=card('放映计划 <small class="muted">广告</small>','模拟暂停广告',b('closead','关闭')+b('toggle','继续播放','','primary'));
  else if(p==='trial')html=card('试看已结束',s.kind==='coin'?'解锁本视频需 30 金币 · 余额 '+balance:'开通 VIP 后从 00:15 继续观看',b('rights',s.kind==='coin'?(balance<30?'去充值':'确认解锁'):'开通 VIP','','primary')+b('trialback','返回')+b('line','线路')+(!immersive&&!document.fullscreenElement?b('full','全屏','full'):''));
@@ -641,7 +619,7 @@ function drawMenu(){
  if(menu==='details'&&view==='long')h=
  (qualities[s.line].length>1?item('quality','清晰度',s.qualityAuto?'自动':s.quality+'P'):'')+
  item('line','播放线路','线路 '+s.line)+item('mute',s.muted?'开启声音':'静音')+item('sub','字幕',s.sub?'已开启':'已关闭')+item('fit','播放尺寸',s.fit==='cover'?'填满画面':'适应画面')+item('feedback','播放反馈');
- if(menu==='more'&&view==='long')h=(qualities[s.line].length>1?item('quality','清晰度',s.qualityAuto?'自动':s.quality+'P'):'')+item('line','播放线路','线路 '+s.line)+item('mute',s.muted?'开启声音':'静音')+item('sub','字幕',s.sub?'已开启':'已关闭')+item('fit','播放尺寸',s.fit==='cover'?'填满画面':'适应画面')+item('feedback','播放反馈');
+ if(menu==='more'&&view==='long')h=settingSwitch('loop','循环播放',!!s.loop)+(qualities[s.line].length>1?item('quality','清晰度',s.qualityAuto?'自动':s.quality+'P'):'')+item('line','播放线路','线路 '+s.line)+item('mute',s.muted?'开启声音':'静音')+item('sub','字幕',s.sub?'已开启':'已关闭')+item('fit','播放尺寸',s.fit==='cover'?'填满画面':'适应画面')+item('feedback','播放反馈');
  if(menu==='fit')h=item('size:contain','适应画面','保持原比例',s.fit!=='cover')+item('size:cover','填满画面','裁切边缘',s.fit==='cover');
  if(menu==='line')h=item('auto','自动推荐',s.auto?'已开启':'',s.auto)+Object.keys(qualities).map(l=>item('route:'+l,'线路 '+l,(l===s.line?'当前 · ':'')+(s.bad.has(l)?'暂不可用':l==='C'&&s.fault==='version'?'不同版本':l==='A'&&s.fault==='first'?'较慢':'可用')+' · '+qualities[l].join('/')+'P',l===s.line)).join('')+'<small class="muted">线路与画质为模拟配置 · 编码 '+s.encoding+'</small>';
  if(menu==='rate')h=[.5,.75,1,1.25,1.5,2].map(r=>item('speed:'+r,r+'×',r===s.rate?'✓ 当前':'',r===s.rate)).join('');
@@ -691,6 +669,7 @@ function stopHold(){
 }
 function action(a){
  reveal();
+ if(s.phase==='ad'&&!['volume','mute','full','close','reset'].includes(a))return;
  if(a.startsWith('size:')){s.fit=a.split(':')[1];video.style.objectFit=s.fit;closeMenu();return}
  if(a.startsWith('speed:'))return setRate(Number(a.split(':')[1]));
  if(a.startsWith('quality:')){changeQuality(a.split(':')[1]);return}
@@ -740,7 +719,7 @@ function action(a){
  case 'inject':inject();break;
  case 'at':seekTo(86);break;
  case 'closead':s.phase='pause';draw();break;
- case 'skipad':finishAd(true);break;
+
  case 'cancelnext':clearInterval(nextTimer);s.nextAt=0;draw();break;
  case 'trialback':if(immersive||document.fullscreenElement)toggleFull();else if(view==='short')switchFeed(1);else {s.phase='pause';draw()}break;
  case 'return':if(immersive||document.fullscreenElement)toggleFull();else if(view==='short')switchFeed(1);else document.querySelector('header').scrollIntoView();break;
@@ -755,7 +734,7 @@ function action(a){
  case 'reset':
   controller?.abort();if(s)s.time=0;
   try{for(const id of sessions.keys())localStorage.removeItem('lab:'+id)}catch{}
-  sessions.clear();events=[];feedbackLinks.clear();$('query').value='';offline=false;ads='none';identity='guest';balance=0;feedbackFail=false;episode=3;index=0;$('identity').value='guest';$('ads').value='none';loadView();renderLogs();break;
+  sessions.clear();events=[];feedbackLinks.clear();$('query').value='';offline=false;ads='pre';identity='guest';balance=0;feedbackFail=false;episode=3;index=0;$('identity').value='guest';$('ads').value='pre';loadView();renderLogs();break;
  }
 }
 document.addEventListener('click',e=>{
