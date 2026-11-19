@@ -128,6 +128,45 @@ body{display:flex;flex-direction:column;align-items:center;justify-content:cente
 .announcement-notice{font-size:13px;line-height:1.65;color:#6c2843;margin:0 0 10px;padding:10px 12px;background:#fff0f5;border:1px solid #ffc0d5;border-left:4px solid #ff4f8b;border-radius:10px}.announcement-notice-title{display:block;font-size:14px;font-weight:800;color:#db275f;margin-bottom:4px}.announcement-notice p{margin:0}.announcement-notice p strong{color:#c82459;font-weight:750}
 
 .publish-time{display:inline-flex!important;align-items:center;gap:4px}.publish-clock{width:12px;height:12px;flex:none;vertical-align:middle}.announcement-hero h2{display:flex;align-items:center;justify-content:center;gap:8px}.announcement-speaker{width:25px;height:25px;flex:none}
+
+.reference-player{position:relative;background:#000;isolation:isolate}
+.reference-player>.drama-toolbar,.reference-player>.drama-actions,.reference-player>.rotate-hint,.reference-player>.feedback-at-danmaku,.reference-player>.drama-shade{display:none}
+.reference-player>.drama-backdrop{position:absolute;inset:58px 10px 132px;aspect-ratio:auto;z-index:0}
+.reference-player .drama-backdrop video{object-fit:contain!important}
+.reference-player>.danmaku-layer{top:78px;z-index:2;font-size:13px}
+.reference-player>.media-play-overlay{top:46%;z-index:3}
+.reference-player-header{position:absolute;top:0;left:0;right:0;height:54px;padding:5px 12px;display:flex;align-items:center;z-index:4;background:#000}
+.reference-player-header button{display:grid;place-items:center;width:32px;height:38px;padding:5px;color:#fff}
+.reference-player-header svg{width:23px;height:23px}
+.reference-player-footer{position:absolute;bottom:0;left:0;right:0;padding:0 16px 12px;z-index:4;background:#000;color:#fff}
+.reference-episode-entry{display:flex;align-items:center;gap:8px;width:100%;height:36px;padding:0 2px;margin-bottom:9px;border-bottom:1px solid #292929;font-size:12px;color:#fff;text-align:left}
+.reference-current-episode{margin-left:auto;color:#a9a9ae;font-size:11px}.reference-episode-entry svg{width:17px;height:17px;flex:none}
+.reference-controls{display:flex;align-items:center;gap:10px;height:35px;font-size:13px;white-space:nowrap}.reference-controls button{padding:4px 0;color:#fff;font-size:13px}
+.reference-controls #reference-play-time{min-width:100px;font-variant-numeric:tabular-nums}.reference-controls .reference-comments,.reference-controls .reference-fullscreen{display:grid;place-items:center;width:23px;height:28px}.reference-controls svg{width:20px;height:20px}
+.reference-player-footer .scrub-container{margin:3px 0 0;padding:0}.reference-player-footer input[type=range]{width:100%;margin:0;height:15px;accent-color:#ff75a5}
+.reference-player.container-fullscreen>.drama-backdrop{inset:0;width:100%;height:100%}
+
+.drama-sheet{min-height:0;height:auto;max-height:75dvh}.drama-sheet .episode-grid{gap:8px}.drama-sheet .episode-grid button{height:56px;min-height:56px;padding:8px 3px;aspect-ratio:auto}.drama-sheet .episode-grid button b{font-size:15px}.drama-sheet .drama-range{margin:10px 0 12px}.drama-sheet .panel-collapse{margin-top:18px;padding-top:12px;padding-bottom:8px}
+
+.landscape-rotation-guide{position:absolute;left:50%;bottom:138px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:7px 11px;background:#211b24dc;border:1px solid #ff88ad40;color:#ff9fbd;border-radius:18px;font-size:11px;z-index:4}
+.landscape-rotation-guide svg{width:20px;height:20px;animation:phone-rotate 2.6s ease-in-out infinite}@keyframes phone-rotate{0%,100%{transform:rotate(0)}50%{transform:rotate(-30deg)}}
+.drama-player.landscape-video.container-fullscreen>.reference-player-footer{display:block!important;z-index:4;background:linear-gradient(transparent,#000b);padding-top:15px}
+.drama-player.landscape-video.container-fullscreen .reference-episode-entry{width:auto;margin-left:auto;border:1px solid #ffffff50;border-radius:22px;background:#24202499;padding:0 14px;max-width:290px;gap:12px}
+.drama-player.landscape-video.container-fullscreen .reference-current-episode{color:#ddd}
+.sheet.landscape-episode-sheet{position:fixed;inset:var(--sheet-top) var(--sheet-right) auto auto;margin:0;width:min(310px,78vw);height:var(--sheet-height);min-height:0;max-height:var(--sheet-height);border-radius:16px 0 0 16px;background:#201d24f5;padding:12px 14px;animation:episode-slide-in .2s ease-out;overflow-y:auto}
+.landscape-episode-sheet::before{display:none}.landscape-episode-sheet .episode-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.landscape-episode-sheet .panel-collapse{display:none}
+@keyframes episode-slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@media(orientation:landscape) and (max-height:600px){body{min-height:100dvh}.prototype-workspace-bar{display:none}#app{width:100vw;height:100dvh;max-width:none}.reference-player>.drama-backdrop{inset:0 64px 100px}.reference-player-header{background:linear-gradient(#0007,transparent)}.reference-player-footer{padding:0 24px 8px}.reference-episode-entry{margin-left:auto;width:260px}.reference-player>.danmaku-layer{top:55px}.landscape-rotation-guide{display:none}}
+@media(prefers-reduced-motion:reduce){.landscape-rotation-guide svg,.sheet.landscape-episode-sheet{animation:none}}
+
+.drama-sheet .episode-grid,.landscape-episode-sheet .episode-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.drama-sheet .episode-grid button{height:48px;min-height:48px;padding:7px 0}.drama-sheet .episode-grid button b{font-size:13px}.drama-sheet .episode-coin-corner{font-size:7px;padding:2px 3px;border-radius:0 6px 0 5px}.episode-page-ranges{display:flex;gap:6px;overflow:auto;margin:6px 0 12px}.episode-page-ranges button{flex:none;border:1px solid #55414e;border-radius:7px;padding:4px 10px;font-size:11px}.episode-page-ranges button.active{color:#ff9dbc;border-color:#ff85a4;background:#422735}.episode-page-caption{font-size:10px;color:#9a8997;margin:12px 0 0;text-align:center}
+#app.landscape-cinema{width:min(960px,96vw);height:min(450px,80dvh);max-width:none;overflow:hidden}.landscape-cinema .drama-player{height:100%}
+.drama-player.landscape-video.container-fullscreen>.reference-player-footer,.landscape-cinema .exit-container-fullscreen{display:none!important}.drama-player.landscape-video.container-fullscreen>.cinema-ui{display:block!important;position:absolute;inset:0;z-index:6;pointer-events:none;color:#fff}.cinema-ui button,.cinema-ui input,.cinema-volume{pointer-events:auto}.cinema-ui button{color:white;display:grid;place-items:center;background:#ffffff18;border:1px solid #ffffff58;backdrop-filter:blur(12px)}.cinema-top{position:absolute;top:6%;left:4%;right:4%;display:flex;align-items:center}.cinema-top>button{width:44px;height:44px;border-radius:50%}.cinema-volume{display:flex;align-items:center;gap:10px;background:#ffffff20;border:1px solid #ffffff55;border-radius:40px;padding:10px 14px;backdrop-filter:blur(14px)}.cinema-volume input{width:120px;accent-color:#fff;height:5px}.cinema-volume svg{width:24px;height:24px}.cinema-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:65px}.cinema-center button{width:64px;height:64px;border-radius:50%;position:relative}.cinema-center button svg{width:42px;height:42px}.cinema-center button>span{position:absolute;font-size:16px;font-weight:700;top:25px}.cinema-center .cinema-play{width:96px;height:96px}.cinema-center .cinema-play svg{width:44px;height:44px}.cinema-options{position:absolute;right:4%;bottom:22%;display:flex;gap:0;border:1px solid #ffffff55;border-radius:26px;overflow:hidden;pointer-events:auto;background:#ffffff18;backdrop-filter:blur(12px)}.cinema-options button{padding:10px 14px;border:0;background:none;font-size:13px;min-width:48px}.cinema-timeline{position:absolute;left:4%;right:4%;bottom:6%;display:flex;align-items:center;gap:12px;border:1px solid #ffffff40;border-radius:40px;background:#ffffff20;backdrop-filter:blur(16px);padding:12px 18px;font-size:13px;font-variant-numeric:tabular-nums}.cinema-timeline input{flex:1;min-width:0;accent-color:#fff;height:6px}.cinema-ui svg{width:24px;height:24px}
+.sheet.landscape-episode-sheet{width:min(390px,75vw)}
+@media(max-width:600px) and (orientation:portrait){#app.landscape-cinema{width:96vw;height:54vw}.cinema-top>button{width:30px;height:30px}.cinema-volume{padding:5px 8px}.cinema-volume input{width:65px}.cinema-center{gap:28px}.cinema-center button{width:42px;height:42px}.cinema-center button svg{width:30px;height:30px}.cinema-center button>span{font-size:11px;top:17px}.cinema-center .cinema-play{width:62px;height:62px}.cinema-options button{padding:5px 10px;font-size:11px}.cinema-timeline{padding:6px 10px;font-size:10px}.cinema-options{bottom:24%}}
+@media(orientation:landscape) and (max-height:600px){#app.landscape-cinema{width:100vw;height:100dvh}}
+
+.drama-player.landscape-video.container-fullscreen.cinema-clean>.cinema-ui{opacity:0;visibility:hidden;pointer-events:none}.drama-player.landscape-video.container-fullscreen>.cinema-ui{transition:opacity .15s ease}.drama-player.landscape-video.container-fullscreen.cinema-clean>.cinema-ui *{pointer-events:none!important}
 </style>
 <header class="prototype-workspace-bar"><span>51吃瓜 App 原型</span><button type="button" id="standalone-prd-link" aria-haspopup="dialog">优化清单 PRD</button></header><div id="app"><main id="screen"></main><nav class="nav" id="nav" aria-label="底部导航"></nav><dialog id="dialog" class="sheet"></dialog><div id="toast" class="toast" role="status" hidden></div></div>
 <dialog id="prd-browser-dialog" class="prd-browser-dialog" aria-labelledby="prd-browser-title"><header class="prd-browser-header"><strong id="prd-browser-title">优化清单 PRD</strong><button type="button" id="close-prd-browser" aria-label="关闭优化清单">×</button></header><iframe id="prd-browser-content" title="优化清单与交互逻辑"></iframe></dialog><script>
@@ -386,20 +425,20 @@ const dramaCatalog=dramaNames.map((name,i)=>({
 Object.assign(drama,{panel:'简介',genre:'推荐',sort:'最新更新',query:'',balance:30,unlocked:new Set(),vip:false});
 const episodePaid=ep=>ep>=4&&(dramaCatalog[drama.id].type==='vip'?!drama.vip:!drama.unlocked.has(drama.id+'-'+ep));
 const accessTag=i=>['免费','金币','VIP'][['free','coin','vip'].indexOf(dramaCatalog[i].type)];
-const shortCard=(item,i)=>`<article class="drama-catalog-card"><button class="drama-poster ${item.orientation==='landscape'?'landscape-cover':'portrait-cover'}" data-act="open-drama|${i}" aria-label="播放 ${item.name}">${graphic(media.people[i%4])}<span class="orientation-mark">${item.orientation==='landscape'?'横屏':'竖屏'}</span><span class="drama-access">${accessTag(i)}</span><span class="drama-poster-bottom"><span class="poster-view-count">${icon('play')}${displayedViews(item)}</span><span class="poster-episode-status">${episodeStatus(item)}</span></span></button><button class="drama-title" data-act="open-drama|${i}">${item.name}</button><div class="drama-list-metadata"><span class="publish-time"><svg class="publish-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>2天前</span></div></article>`;
+const shortCard=(item,i)=>`<article class="drama-catalog-card"><button class="drama-poster ${item.orientation==='landscape'?'landscape-cover':'portrait-cover'}" data-act="open-drama|${i}" aria-label="播放 ${item.name}">${graphic(media.people[i%4])}<span class="drama-access">${accessTag(i)}</span><span class="drama-poster-bottom"><span class="poster-view-count">${icon('play')}${displayedViews(item)}</span><span class="poster-episode-status">${episodeStatus(item)}</span></span></button><button class="drama-title" data-act="open-drama|${i}">${item.name}</button><div class="drama-list-metadata"><span class="publish-time"><svg class="publish-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>2天前</span></div></article>`;
 dramaGrid=()=>`<div class="tile-grid drama-catalog">${(drama.sort==='本周最热'?[5,4,3,2,1,0]:drama.sort==='最多观看'?[3,5,1,0,4,2]:[0,1,2,3,4,5]).filter(i=>(drama.genre==='推荐'||dramaCatalog[i].tags.includes(drama.genre))&&(!drama.query||dramaCatalog[i].name.includes(drama.query))).map(i=>shortCard(dramaCatalog[i],i)).join('')||'<p class="muted">暂无匹配短剧</p>'}</div>`;
 const dramaCatalogPage=()=>`<header class="bar drama-catalog-head"><strong>AI短剧</strong><form id="drama-search" class="row grow"><input name="keyword" placeholder="搜索短剧" aria-label="搜索短剧"><button>搜索</button></form></header><div class="pad">${carousel('video')}${tabRow(['最新更新','本周最热','最多观看'],drama.sort,'drama-sort')}${drama.query?btn('清除搜索','catalog-clear','pink'):''}${dramaGrid()}</div>`;
 const inheritedHome=newPages.home,inheritedVideo=newPages.video;
 newPages.home=()=>['AI短剧','AI成人短剧'].includes(category)?`<header class="bar">${btn(icon('back'),'catalog-home-back')}<strong>AI短剧</strong><span></span></header>${dramaCatalogPage()}`:inheritedHome();
 newPages.video=()=>state.videoTab==='AI短剧'?`${tabRow(['推荐','精心精选','AI短剧','学生校园','吃瓜榜单'],state.videoTab,'videoTab')}${dramaCatalogPage()}`:inheritedVideo();
-const panelHeader=()=>`<div class="drama-panel-head">${graphic(media.people[drama.id%4])}<div><h3>${dramaNames[drama.id]}</h3><small>全${dramaCatalog[drama.id].episodes}集 · 热度${dramaCatalog[drama.id].heat}万</small></div></div>`;
+const panelHeader=()=>`<div class="drama-panel-head">${graphic(media.people[drama.id%4])}<div><h3>${dramaNames[drama.id]}</h3><small>全${dramaCatalog[drama.id].episodes}集 · 浏览量${displayedViews(dramaCatalog[drama.id])}</small></div></div>`;
 function renderDramaPanel(tab){
  drama.panel=tab;
  const item=dramaCatalog[drama.id];
  const body=tab==='简介'?`<p class="drama-summary">${item.description}</p><div class="genre-tags">${item.tags.map(t=>'<span>'+t+'</span>').join('')}</div><h3 class="recommend-heading">更多好剧推荐</h3><div class="drama-recommend">${dramaCatalog.map((x,i)=>i!==drama.id?shortCard(x,i):'').join('')}</div>`:`<p class="drama-range">1–${item.updatedEpisodes}</p><div class="episode-grid">${Array.from({length:item.updatedEpisodes},(_,i)=>`<button data-act="catalog-episode|${i+1}" class="${drama.episode===i+1?'selected':''}"><b>${String(i+1).padStart(2,'0')}</b>${i>=3?'<span class="episode-coin-corner">'+(episodePaid(i+1)?(item.type==='vip'?'VIP':'40金币'):'已解锁')+'</span>':''}${drama.episode===i+1?'<span class="episode-indicator">▂▆▃</span>':''}</button>`).join('')}</div>`;
- const html=panelHeader()+`<div class="drama-panel-tabs">${['简介','选集'].map(t=>btn(t,'catalog-panel|'+t,t===tab?'active':'')).join('')}</div>`+body;
- if($('dialog').open){$('dialog').innerHTML=`<div class="bar"><strong>短剧详情</strong><form method="dialog"><button aria-label="关闭">${icon('close')}</button></form></div>`+html;}
- else modal('短剧详情',html);
+ const html=body;
+ if($('dialog').open){$('dialog').innerHTML=`<div class="bar"><strong>选集</strong><form method="dialog"><button aria-label="关闭">${icon('close')}</button></form></div>`+html;}
+ else modal('选集',html);
  $('dialog').classList.add('drama-sheet');
 }
 dramaEpisodes=()=>renderDramaPanel('选集');
@@ -487,7 +526,7 @@ const orientationPanel=renderDramaPanel;
 renderDramaPanel=function(tab){
  if($('dialog').open&&$('dialog').classList.contains('drama-sheet')&&drama.panel===tab){$('dialog').close();return}
  orientationPanel(tab);
- $('dialog').insertAdjacentHTML('beforeend','<button type="button" class="panel-collapse" data-act="close-drama-panel">收起选集与简介 ⌄</button>');
+ $('dialog').insertAdjacentHTML('beforeend','<button type="button" class="panel-collapse" data-act="close-drama-panel">收起选集 ⌄</button>');
 };
 $('app').addEventListener('click',event=>{
  const button=event.target.closest('[data-act]');
@@ -600,8 +639,12 @@ $('dialog').addEventListener('close',()=>$('dialog').classList.remove('announcem
 
 $('app').addEventListener('click',event=>{
  if(!event.target.closest('.drama-player.container-fullscreen'))return;
+ if(event.target.closest('button,input,form,textarea'))return;
  if(typeof swipeAt!=='undefined'&&Date.now()-swipeAt<350)return;
- event.preventDefault();event.stopImmediatePropagation();toggleContainerFullscreen();
+ event.preventDefault();event.stopImmediatePropagation();
+ const cinemaPlayer=event.target.closest('.landscape-video.container-fullscreen');
+ if(cinemaPlayer){setCinemaControls(cinemaPlayer,cinemaPlayer.classList.contains('cinema-clean'));return}
+ toggleContainerFullscreen();
 },true);
 
 dramaCatalog.forEach(item=>{item.type='coin'});
@@ -673,7 +716,8 @@ $('app').addEventListener('click',event=>{
  const player=event.target.closest('.drama-player');
  const video=document.querySelector('#drama-media');
  if(!player||!video||player.classList.contains('container-fullscreen'))return;
- if(event.target.closest('[data-act="media-play"]')||event.target===video){
+ if(Date.now()-swipeAt<400)return;
+ if(event.target.closest('[data-act="media-play"]')||(!event.target.closest('button,input,form,textarea,a,.reference-player-footer,.reference-player-header')&&!$('dialog').open)){
   event.preventDefault();if(video.paused)video.play().catch(()=>notice('点击重试播放'));else video.pause();
  }
 });
@@ -701,27 +745,10 @@ const optimizationPRD=`<article class="optimization-prd">
 <li>点击「点我一键复制全部地址」复制公告内全部地址，按钮增加手指轻点动效。</li>
 <li>点击右上角「×」或遮罩关闭，保持原页面和浏览位置。</li>
 </ul></section>
-<section><h2>2 · 新增短剧播放页</h2><ul>
-<li>列表每行两张横图，展示剧名、更新时间、观看数和更新集数；移除列表评论数量，发布时间前展示时钟图标。权益角标仅显示「金币」或「VIP」，列表不展示具体金币价格。封面左下角展示播放图标＋观看量，右下角展示「更新至X集」或「全X集」。</li>
-<li>总集数＞已更新集数时显示「更新至X集」；两者相等时显示「全X集」。X分别取已更新集数和总集数。选集仅展示已更新的集数。</li>
-<li>上滑下一集，下滑上一集。到首集时提示，停留当前集；在最新一集继续上滑时居中弹窗提示，已完结显示「已经是最后一集」，连载中显示「已经是最新一集」。</li>
-<li>剧名下展示标签，简介默认两行，点击「展开」原位展示全文，再次点击收起。</li>
-<li>弹幕按当前剧集ID获取，仅展示当前集弹幕；播放页简介取当前集简介，下拉选集面板「简介」取整部短剧简介。切换集数时同步更新弹幕与当前集简介。</li>
-<li>点击画面切换播放、暂停。拖动进度条时显示当前／总时长，松开后跳转。</li>
-<li>手指长按播放器右侧空白区域，以2倍速播放并显示「2倍速播放中」；松开或取消长按时恢复原播放倍速。右侧操作按钮不触发倍速，长按不触发暂停或上下集切换；试看时长按视频播放进度计算。</li>
-<li>点击全屏进入清屏模式，单击画面退出。</li>
-<li>右侧支持点赞、收藏、评论和分享。点赞、收藏可取消，评论从底部展开，分享跳转「邀请好友」。</li>
-<li>选集入口展示「选集 · 全X集　当前播放第N集」，最右侧为向上箭头图标。点击后从底部展开，当前集高亮。根据每集权益显示「VIP」或「X金币」，已购买显示「已解锁」，免费集不展示角标。</li>
-<li>付费剧集试看时长由后台配置，单位为秒。客户端读取配置并展示试看剩余时长，达到配置秒数后暂停播放并弹出对应的VIP开通或金币解锁提示；已具备观看权益的用户直接完整播放。</li>
-<li>点击未解锁的VIP或金币集，先按后台配置的时长试看。试看结束暂停播放，居中弹窗「解锁当前剧集」展示当前集数。VIP集提示开通会员；金币集展示价格与当前余额，余额不足显示「取消／余额不足前往充值」，余额充足显示「取消／40金币解锁」。确认后扣除40金币并播放，余额不足引导充值，取消后继续原集。重复提交仅扣款一次。VIP集先校验会员权益，无权益时引导开通。</li>
-<li>点击「×」、遮罩或收起按钮关闭选集，保持当前剧集和播放进度。</li>
-<li>按短剧记录上次观看集数，并按集记录播放进度。退出、切集或切到后台时保存，下次进入从上次观看集数与位置续播；再次选择看过的集时恢复该集进度。</li>
+<section><h2>2 · 短剧播放器优化</h2><ul>
+<li>在原有横屏、竖屏播放器基础上增加选集入口。</li>
 </ul></section>
-<section><h2>3 · 新增标签详情页</h2><ul>
-<li>点击标签进入独立结果页，展示「为您展示关于标签『标签名』的共X部视频」，无结果展示空数据页面。</li>
-<li>从播放页进入标签详情后，点击返回恢复原短剧、原集数及播放进度。</li>
-</ul></section>
-<section><h2>4 · 视频模块更新时间计算规则</h2>
+<section><h2>3 · 视频模块更新时间计算规则</h2>
 <table><thead><tr><th>时间差</th><th>展示</th></tr></thead><tbody>
 <tr><td>不足1分钟</td><td>刚刚</td></tr><tr><td>1分钟至不足1小时</td><td>X分钟前</td></tr><tr><td>1小时至不足24小时</td><td>X小时前</td></tr><tr><td>1天至不足30天</td><td>X天前</td></tr><tr><td>30天至180天（含）</td><td>X个月前</td></tr><tr><td>超过180天</td><td>YYYY年M月D日</td></tr>
 </tbody></table><ul>
@@ -729,7 +756,7 @@ const optimizationPRD=`<article class="optimization-prd">
 <li>进入页面、刷新或恢复前台时重新计算。具体日期按北京时间展示。</li>
 <li>时间为空时隐藏，时间晚于当前时间时显示「刚刚」。</li>
 </ul></section>
-<section><h2>5 · 视频播放量展示逻辑</h2><p>展示播放量＝真实有效播放量＋后台配置的假播放量。</p></section>
+<section><h2>4 · 视频播放量展示逻辑</h2><p>展示播放量＝真实有效播放量＋后台配置的假播放量。</p></section>
 </article>`;
 
 function loadDramaHistory(){
@@ -917,7 +944,7 @@ $('app').addEventListener('click',event=>{
 },true);
 
 
-const prdOptimizationOverview="<section class=\"prd-change-overview\"><h2>本次优化点</h2><table><thead><tr><th>模块</th><th>优化内容</th></tr></thead><tbody>\n<tr><td>公告布局</td><td>网址分组、单项复制、App地址一键复制及手指轻点动效。</td></tr>\n<tr><td>短剧列表</td><td>双列横图；左下角播放图标＋观看量，右下角更新至X集／全X集；权益仅展示金币或VIP。</td></tr>\n<tr><td>短剧播放</td><td>上下滑切集、按剧按集续播、简介原位展开、清屏、分享跳转邀请好友。</td></tr>\n<tr><td>选集与解锁</td><td>入口显示总集数与当前播放集数，箭头居右；角标区分VIP、金币及已解锁；未解锁集按后台配置秒数试看，结束后提示开通或充值。</td></tr>\n<tr><td>标签详情</td><td>点击标签进入结果页，展示匹配数量和空状态，返回恢复来源播放页。</td></tr>\n<tr><td>更新时间</td><td>按分钟、小时、天、月及具体日期分段展示。</td></tr>\n<tr><td>播放量</td><td>展示播放量＝真实有效播放量＋后台配置的假播放量。</td></tr>\n</tbody></table></section>";
+const prdOptimizationOverview="<section class=\"prd-change-overview\"><h2>本次优化点</h2><table><thead><tr><th>模块</th><th>优化内容</th></tr></thead><tbody><tr><td>公告布局</td><td>单项复制、全部地址一键复制及手指轻点动效。</td></tr><tr><td>短剧播放器</td><td>在原有横屏、竖屏播放器基础上增加选集入口。</td></tr><tr><td>更新时间</td><td>按分钟、小时、天、月及具体日期分段展示。</td></tr><tr><td>播放量</td><td>展示播放量＝真实有效播放量＋后台配置的假播放量。</td></tr></tbody></table></section>";
 const separatePRDContent=optimizationPRD.replace('<h1>优化清单 PRD</h1>','<h1>优化清单 PRD</h1>'+prdOptimizationOverview);
 const prdDocument='<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>51吃瓜 · 优化清单 PRD</title><style>'+"*{box-sizing:border-box}body{margin:0;background:#f6f3f5;color:#30262e;font:14px/1.85 -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif}.optimization-prd{max-width:1000px;margin:32px auto;padding:36px 40px;background:white;border:1px solid #eadfe5;border-radius:16px}h1{font-size:28px;margin:0 0 25px}h2{font-size:19px;margin:0 0 13px;color:#b53f6b}section{margin:24px 0;padding-top:16px;border-top:1px solid #eedfe6}ul{padding-left:22px;margin:0}li{margin:9px 0}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{padding:12px 15px;border:1px solid #e6d6df;text-align:left;vertical-align:top}th{background:#fff0f6;color:#8e3454}td:first-child{min-width:105px}.prd-change-overview{padding:22px;background:#fff8fb;border:1px solid #f0c8d8;border-radius:12px}@media(max-width:650px){.optimization-prd{margin:0;padding:22px 16px;border-radius:0}h1{font-size:24px}th,td{padding:9px 8px;font-size:12px}.prd-change-overview{padding:14px}}@media print{body{background:white}.optimization-prd{border:0;margin:0;padding:0;max-width:none}section{break-inside:avoid}}"+'</style></head><body>'+separatePRDContent+'</body></html>';
 const prdBrowserDialog=document.getElementById('prd-browser-dialog');
@@ -942,8 +969,155 @@ prdBrowserDialog.addEventListener('close',()=>{
 
 
 const modalBeforeCenteredUnlock=modal;
-modal=function(title,html){$('dialog').classList.remove('episode-access-dialog');modalBeforeCenteredUnlock(title,html)};
+modal=function(title,html){$('dialog').classList.remove('episode-access-dialog','landscape-episode-sheet');$('dialog').style.removeProperty('--sheet-top');$('dialog').style.removeProperty('--sheet-right');$('dialog').style.removeProperty('--sheet-height');modalBeforeCenteredUnlock(title,html)};
 $('dialog').addEventListener('close',()=>$('dialog').classList.remove('episode-access-dialog'));
+
+// Reference player layout; episode sheet continues to use the existing handler.
+const playerBeforeReferenceLayout=newPages.dramaPlayer;
+newPages.dramaPlayer=()=>{
+ let html=playerBeforeReferenceLayout();
+ html=html.replace('class="drama-player ','class="drama-player reference-player ');
+ const start=html.indexOf('<div class="drama-bottom">');
+ if(start>=0)html=html.slice(0,start)+'</section>';
+ const header=`<header class="reference-player-header">${btn(icon('back'),'screen-back','back-key')}<span class="grow"></span>${btn(icon('help'),'drama-feedback')}</header>`;
+ const controls=`<footer class="reference-player-footer"><button class="reference-episode-entry" data-act="drama-episodes"><span>选集 · 全${dramaCatalog[drama.id].episodes}集</span><span class="reference-current-episode">当前播放第${drama.episode}集</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button><div class="reference-controls"><span id="reference-play-time" aria-label="播放时间">0:00 / 0:00</span>${btn(drama.rate.toFixed(1)+' X','drama-rate','reference-rate')}${btn('反馈','drama-feedback')}<span class="grow"></span>${btn(softIcon('chat'),'drama-comments','reference-comments')}${btn(fullscreenIcon,'drama-fullscreen','reference-fullscreen')}</div><div class="scrub-container"><output id="scrub-time" hidden aria-live="polite"></output><label class="sr-only" for="drama-progress">播放进度</label><input id="drama-progress" type="range" min="0" max="120" value="${drama.position}" aria-label="播放进度"></div></footer>`;
+ return html.replace('</section>',header+controls+'</section>');
+};
+const renderBeforeReferenceLayout=render;
+render=function(reset=true){
+ renderBeforeReferenceLayout(reset);
+ const video=document.querySelector('#drama-media');
+ if(!video)return;
+ const format=t=>Math.floor((Number.isFinite(t)?t:0)/60)+':'+String(Math.floor((Number.isFinite(t)?t:0)%60)).padStart(2,'0');
+ const update=()=>{const out=$('reference-play-time');if(out)out.textContent=format(video.currentTime)+' / '+format(video.duration)};
+ video.addEventListener('timeupdate',update);video.addEventListener('loadedmetadata',update);update();
+};
+
+const playerBeforeLandscapeGuide=newPages.dramaPlayer;
+newPages.dramaPlayer=()=>{
+ let html=playerBeforeLandscapeGuide();
+ if(dramaCatalog[drama.id].orientation==='landscape')html=html.replace('<footer class="reference-player-footer">','<button class="landscape-rotation-guide" data-act="drama-fullscreen">'+rotationIcon+'<span>旋转手机，横屏观看体验更佳</span></button><footer class="reference-player-footer">');
+ return html;
+};
+const panelBeforeSideEpisodes=renderDramaPanel;
+renderDramaPanel=function(tab){
+ const side=!!document.querySelector('.drama-player.landscape-video.container-fullscreen')||window.matchMedia('(orientation: landscape) and (max-height: 600px)').matches;
+ panelBeforeSideEpisodes(tab);
+ const dialog=$('dialog');
+ if(!dialog.open||!dialog.classList.contains('drama-sheet'))return;
+ dialog.classList.toggle('landscape-episode-sheet',side);
+ if(side){
+  const rect=$('app').getBoundingClientRect();
+  dialog.style.setProperty('--sheet-top',rect.top+'px');
+  dialog.style.setProperty('--sheet-right',Math.max(0,window.innerWidth-rect.right)+'px');
+  dialog.style.setProperty('--sheet-height',rect.height+'px');
+ }
+};
+const renderBeforeLandscapeRestore=render;
+render=function(reset=true){
+ const keepFullscreen=!!document.querySelector('.drama-player.landscape-video.container-fullscreen');
+ renderBeforeLandscapeRestore(reset);
+ const player=document.querySelector('.drama-player');
+ if(keepFullscreen&&player&&!player.classList.contains('container-fullscreen'))toggleContainerFullscreen();
+};
+
+let episodePageIndex=0;
+function episodePageBounds(total,page){const pages=Math.max(1,Math.ceil(total/30));page=Math.max(0,Math.min(page,pages-1));return {page,pages,start:page*30+1,end:Math.min(total,(page+1)*30)}}
+function showPagedEpisodes(resetPage=true){
+ const item=dramaCatalog[drama.id];
+ if(resetPage)episodePageIndex=Math.floor((drama.episode-1)/30);
+ const bounds=episodePageBounds(item.updatedEpisodes,episodePageIndex);episodePageIndex=bounds.page;
+ const side=!!document.querySelector('.landscape-video.container-fullscreen')||window.matchMedia('(orientation: landscape) and (max-height: 600px)').matches;
+ const buttons=Array.from({length:Math.max(0,bounds.end-bounds.start+1)},(_,i)=>{
+  const ep=bounds.start+i;
+  return `<button data-act="catalog-episode|${ep}" class="${drama.episode===ep?'selected':''}" aria-label="第${ep}集"><b>${String(ep).padStart(2,'0')}</b>${ep>=4?'<span class="episode-coin-corner">'+(episodePaid(ep)?(item.type==='vip'?'VIP':'40金币'):'已解锁')+'</span>':''}</button>`;
+ }).join('');
+ const pages=bounds.pages>1?`<nav class="episode-page-ranges" aria-label="集数分页">${Array.from({length:bounds.pages},(_,i)=>btn((i*30+1)+'–'+Math.min(item.updatedEpisodes,(i+1)*30),'episode-page|'+i,i===bounds.page?'active':'')).join('')}</nav>`:'';
+ if($('dialog').open)$('dialog').close();
+ modal('选集',pages+`<p class="drama-range">${bounds.start}–${bounds.end}</p><div class="episode-grid">${buttons}</div><p class="episode-page-caption">第${bounds.page+1} / ${bounds.pages}页 · 每页30集</p>`+btn('收起选集 ⌄','close-drama-panel','panel-collapse'));
+ drama.panel='选集';$('dialog').classList.add('drama-sheet');
+ $('dialog').classList.toggle('landscape-episode-sheet',side);
+ if(side){const rect=$('app').getBoundingClientRect();$('dialog').style.setProperty('--sheet-top',rect.top+'px');$('dialog').style.setProperty('--sheet-right',Math.max(0,innerWidth-rect.right)+'px');$('dialog').style.setProperty('--sheet-height',rect.height+'px')}
+}
+renderDramaPanel=function(){showPagedEpisodes(true)};
+$('app').addEventListener('click',event=>{
+ const button=event.target.closest('[data-act^="episode-page|"]');if(!button)return;
+ event.preventDefault();event.stopImmediatePropagation();episodePageIndex=Number(button.dataset.act.split('|')[1]);showPagedEpisodes(false);
+},true);
+const cinemaSvg=(path)=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>';
+function mountLandscapeCinema(){
+ const player=document.querySelector('.landscape-video.container-fullscreen');
+ if(!player)return;
+ $('app').classList.add('landscape-cinema');
+ if(player.querySelector('.cinema-ui'))return;
+ player.classList.add('cinema-clean');
+ player.insertAdjacentHTML('beforeend',`<div class="cinema-ui"><div class="cinema-top"><button data-cinema="exit" aria-label="退出横屏">${icon('close')}</button><span class="grow"></span><label class="cinema-volume" aria-label="音量"><input type="range" id="cinema-volume" min="0" max="1" step=".05" value="0">${cinemaSvg('<path d="M11 5 6 9H3v6h3l5 4zM15 8c3 2 3 6 0 8M18 5c5 4 5 10 0 14"/>')}</label></div><div class="cinema-center"><button data-cinema="backward" aria-label="后退10秒">${cinemaSvg('<path d="M4 8V3m0 5h5M4 8a9 9 0 1 1-1 9"/>')}<span>10</span></button><button class="cinema-play" data-cinema="play" aria-label="播放或暂停">${icon('play')}</button><button data-cinema="forward" aria-label="前进10秒">${cinemaSvg('<path d="M20 8V3m0 5h-5m5 0a9 9 0 1 0 1 9"/>')}<span>10</span></button></div><div class="cinema-options"><button data-cinema="episodes">选集</button><button data-cinema="rate">${drama.rate.toFixed(1)}×</button><button data-cinema="more" aria-label="播放设置">•••</button></div><div class="cinema-timeline"><span id="cinema-current">0:00</span><input id="cinema-progress" type="range" min="0" max="120" step=".1" value="${drama.position}" aria-label="横屏播放进度"><span id="cinema-remaining">−0:00</span></div></div>`);
+ const video=$('drama-media');
+ const fmt=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+ const sync=()=>{
+  if(!video?.isConnected)return;
+  const duration=Number.isFinite(video.duration)?video.duration:0;
+  $('cinema-current').textContent=fmt(video.currentTime||0);$('cinema-remaining').textContent='−'+fmt(Math.max(0,duration-video.currentTime));
+  $('cinema-progress').max=duration||120;$('cinema-progress').value=video.currentTime||0;
+  player.querySelector('.cinema-play').innerHTML=video.paused?icon('play'):cinemaSvg('<path d="M8 5v14M16 5v14"/>');
+ };
+ if(video){video.addEventListener('timeupdate',sync);video.addEventListener('loadedmetadata',sync);video.addEventListener('play',sync);video.addEventListener('pause',sync);$('cinema-volume').value=video.muted?0:video.volume;sync()}
+}
+const toggleBeforeCinema=toggleContainerFullscreen;
+toggleContainerFullscreen=function(){
+ toggleBeforeCinema();
+ const active=!!document.querySelector('.landscape-video.container-fullscreen');
+ $('app').classList.toggle('landscape-cinema',active);
+ if(active)mountLandscapeCinema();else document.querySelector('.cinema-ui')?.remove();
+};
+document.addEventListener('click',event=>{
+ const button=event.target.closest('[data-cinema]');if(!button)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ const video=$('drama-media');const action=button.dataset.cinema;
+ if(action==='exit')toggleContainerFullscreen();
+ if(action==='play'&&video){if(video.paused)video.play().catch(()=>notice('点击重试播放'));else video.pause()}
+ if(action==='backward'&&video)video.currentTime=Math.max(0,video.currentTime-10);
+ if(action==='forward'&&video)video.currentTime=Math.min(mediaDuration(),video.currentTime+10);
+ if(action==='episodes')showPagedEpisodes(true);
+ if(action==='rate')modal('播放倍速',`<div class="option-list">${[.5,.75,1,1.25,1.5,2].map(r=>btn(r+'×','drama-set-rate|'+r,r===drama.rate?'pink':'')).join('')}</div>`);
+ if(action==='more')dramaSettings();
+},true);
+$('app').addEventListener('input',event=>{
+ const video=$('drama-media');if(!video)return;
+ if(event.target.id==='cinema-progress')video.currentTime=Number(event.target.value);
+ if(event.target.id==='cinema-volume'){video.volume=Number(event.target.value);video.muted=video.volume===0}
+});
+const renderBeforeCinema=render;
+render=function(reset=true){renderBeforeCinema(reset);if(document.querySelector('.landscape-video.container-fullscreen'))mountLandscapeCinema();else $('app').classList.remove('landscape-cinema')};
+
+let cinemaControlsTimer=null;
+function setCinemaControls(player,visible){
+ clearTimeout(cinemaControlsTimer);
+ player.classList.toggle('cinema-clean',!visible);
+ const ui=player.querySelector('.cinema-ui');
+ if(ui){ui.inert=!visible;ui.setAttribute('aria-hidden',String(!visible))}
+ if(visible)cinemaControlsTimer=setTimeout(()=>{
+  if(player.isConnected&&!$('dialog').open)setCinemaControls(player,false);
+ },3000);
+}
+const mountBeforeCleanCinema=mountLandscapeCinema;
+mountLandscapeCinema=function(){
+ mountBeforeCleanCinema();
+ const player=document.querySelector('.landscape-video.container-fullscreen');
+ if(player?.classList.contains('cinema-clean'))setCinemaControls(player,false);
+};
+document.addEventListener('pointerdown',event=>{
+ const player=event.target.closest('.landscape-video.container-fullscreen');
+ if(player&&event.target.closest('.cinema-ui'))clearTimeout(cinemaControlsTimer);
+},true);
+document.addEventListener('pointerup',event=>{
+ const player=event.target.closest('.landscape-video.container-fullscreen');
+ if(player&&event.target.closest('.cinema-ui')&&!player.classList.contains('cinema-clean'))setCinemaControls(player,true);
+},true);
+$('dialog').addEventListener('close',()=>{
+ const player=document.querySelector('.landscape-video.container-fullscreen');
+ if(player&&!player.classList.contains('cinema-clean'))setCinemaControls(player,true);
+});
 
 render();
 showAnnouncement();
