@@ -548,7 +548,7 @@ const announcementLinks=[
  {name:'官方TG群',url:'https://t.me/i51chiguaquanfang/10',note:'获取最新通知'}
 ];
 function showAnnouncement(){
- const html=`<div class="announcement-hero"><h2>系统公告</h2></div><div class="announcement-content"><p class="announcement-notice">温馨提示：为避免失联，找不到吃瓜的路。请广大瓜友每两周前往官网更新一次app哟。苹果用户最新系统，如遇app无法下滑，请重新下载安装app即可。</p><div class="announcement-addresses">${announcementLinks.map((link,i)=>`<article class="announcement-link ${link.primary?'primary-link':''}"><div class="row between"><b>${link.name}</b>${btn('复制','announcement-copy|'+i)}</div><div class="announcement-url">${link.url}</div></article>`).join('')}</div>${btn('<span class="copy-hand" aria-hidden="true">☝</span><span>点我复制APP最新地址</span>','announcement-copy-all','rose wide copy-latest-app')}</div>`;
+ const html=`<div class="announcement-hero"><h2>系统公告</h2></div><div class="announcement-content"><p class="announcement-notice">温馨提示：为避免失联，找不到吃瓜的路。请广大瓜友每两周前往官网更新一次app哟。苹果用户最新系统，如遇app无法下滑，请重新下载安装app即可。</p><div class="announcement-addresses">${announcementLinks.map((link,i)=>`<article class="announcement-link ${link.primary?'primary-link':''}"><div class="row between"><b>${link.name}</b>${btn('复制','announcement-copy|'+i)}</div><div class="announcement-url">${link.url}</div></article>`).join('')}</div>${btn('<span class="copy-hand" aria-hidden="true">☝</span><span>点我一键复制全部地址</span>','announcement-copy-all','rose wide copy-latest-app')}</div>`;
  if($('dialog').open)$('dialog').close();
  modal('系统公告',html);
  $('dialog').classList.add('announcement-sheet');
@@ -580,7 +580,7 @@ $('app').addEventListener('click',async event=>{
  const [action,value]=button.dataset.act.split('|');
  if(!action.startsWith('announcement-'))return;
  event.preventDefault();event.stopImmediatePropagation();
- const text=action==='announcement-copy-all'?announcementLinks[0].url:announcementLinks[Number(value)].url;
+ const text=action==='announcement-copy-all'?announcementLinks.map(item=>item.url).join('\n'):announcementLinks[Number(value)].url;
  try{await navigator.clipboard.writeText(text);const old=button.textContent;button.textContent='已复制';setTimeout(()=>{if(button.isConnected)button.textContent=old},1600)}
  catch{
   const input=document.createElement('textarea');input.value=text;input.style.position='fixed';input.style.opacity='0';$('dialog').appendChild(input);input.select();
@@ -694,7 +694,7 @@ const optimizationPRD=`<article class="optimization-prd">
 <h1>优化清单 PRD</h1>
 <section><h2>1 · 公告布局优化</h2><ul>
 <li>点击单项「复制」仅复制对应网址，成功提示「已复制」。</li>
-<li>点击「点我复制APP最新地址」仅复制 App 最新地址，按钮增加手指轻点动效。</li>
+<li>点击「点我一键复制全部地址」复制公告内全部地址，按钮增加手指轻点动效。</li>
 <li>点击右上角「×」或遮罩关闭，保持原页面和浏览位置。</li>
 </ul></section>
 <section><h2>2 · 新增短剧播放页</h2><ul>
