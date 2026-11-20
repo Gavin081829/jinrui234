@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>51 嗨聊 · 直播门票预售</title>
+<style>
+:root{color-scheme:dark;--text:#f5f2f4;--muted:#b2a7b0;--line:#352932;--panel:#201820;--pink:#f22470;--soft:#ff8bb0}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% 44%,#422331 0%,#1b131b 49%,#131017 82%);color:var(--text);font:14px/1.5 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #ff619d;outline-offset:3px}
+button:disabled{cursor:default;opacity:.55}
+.masthead{max-width:1280px;margin:auto;padding:23px 36px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;gap:12px;align-items:center;font-weight:750;letter-spacing:.06em}
+.mark{background:var(--pink);border-radius:10px;display:grid;place-items:center;width:35px;height:35px;color:white;font-size:17px;font-weight:850;letter-spacing:-.06em}
+.device{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.layout{max-width:806px;margin:auto;padding:28px 36px 34px;display:grid;grid-template-columns:minmax(188px,1fr) 405px;align-items:start;gap:38px}
+.intro{padding-top:12px}
+h1{font-size:clamp(30px,3vw,43px);line-height:1.13;margin:0 0 14px;letter-spacing:-.045em}
+.eyebrow{color:var(--soft);font-size:12px;font-weight:700;letter-spacing:.12em;margin-bottom:12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:15px}
+.panel h2{font-size:14px;margin:0 0 12px}
+.scenarios{display:grid;gap:6px}
+.scenarios button{background:#291f29;border:1px solid transparent;border-radius:8px;text-align:left;padding:7px 10px;min-height:37px}
+.scenarios button:hover{background:#392633;border-color:#523646}
+.scenarios button[aria-pressed=true]{background:#492439;border-color:#81425e;color:#ffc1d6}
+.phone{position:relative;isolation:isolate;width:100%;max-width:393px;height:852px;overflow:hidden;border-radius:37px;background:#171321;box-shadow:0 0 0 1px #846272,0 0 0 6px #221923,0 25px 80px #100a1190;margin:auto;color:white}
+.video,.shade{position:absolute;inset:0;z-index:-2}
+.video{background:#171321 url('data:image/webp;base64,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') center/cover}
+.video.blocked{background:#14121b;inset:-14px;background-image:linear-gradient(155deg,#282019,#090810 43%,#1b1d32)}
+.shade{z-index:-1;background:linear-gradient(180deg,#08070989 0%,transparent 28%,transparent 56%,#080709b0 100%)}
+.status{height:54px;display:flex;justify-content:space-between;align-items:center;padding:0 27px 1px;font-size:14px;font-weight:650}
+.signal{display:flex;align-items:center;gap:5px}.signal i{display:block;width:16px;height:11px;background:white;clip-path:polygon(0 100%,0 70%,18% 70%,18% 100%,27% 100%,27% 49%,45% 49%,45% 100%,54% 100%,54% 25%,72% 25%,72% 100%,81% 100%,81% 0,100% 0,100% 100%)}
+.wifi{width:15px;height:12px;position:relative;overflow:hidden}.wifi:before,.wifi:after{content:"";position:absolute;left:50%;transform:translateX(-50%);border:1.5px solid transparent;border-top-color:white;border-radius:50%}.wifi:before{top:1px;width:18px;height:14px}.wifi:after{top:5px;width:11px;height:8px}.wifi b{position:absolute;left:6px;top:9px;width:3px;height:3px;border-radius:50%;background:white}
+.battery{width:21px;height:10px;border:1px solid #ffffff9a;border-radius:3px;padding:1px;position:relative}.battery:before{content:'';display:block;width:100%;height:100%;background:white;border-radius:1px}.battery:after{content:'';position:absolute;right:-3px;top:2px;width:2px;height:4px;background:#ffffff9a}
+.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:117px;height:32px;border-radius:24px;background:#070709;pointer-events:none}
+.roomhead{display:flex;align-items:center;gap:8px;padding:4px 14px 0}
+.avatar{display:block;width:36px;height:36px;flex:none;border-radius:50%;background:#a18b76 url('data:image/webp;base64,UklGRuYBAABXRUJQVlA4INoBAADwCQCdASoZABkAPjkYiUOiIaEUBVQgA4SxgE6ZQj08VReZ7zFWTeTpPI/sEzAd4Dvsv8zyp/S/ogf7PgQP05D0+oN4UgvApQe553754cwSz2CsNCLz0+kAAP79BbOGfxC+mft8JsYhrERNCyQxGd+0/VVRUdyOFDc7kx0Hth4+kvEa1/QogUjekV4bN5SnR32f0cPK8ilZ3nXz80H05MknHfqFdXMu+UMKtfNPlIzweKlB29HmEZVKMzh/reK2N3ikFymhmrHBSSL/3pbpuroKAvil9r9y3NEWW5DAl5cv+ebYdwT8AnkwVy+pE/snztzzdNs1Dn94X2LLztW/fE//17pg8HMlaku7jTmELTsbUaJn0LlEbX15Ax4OIwg05ar9zjs1iAd69/4a+mdA+Hp9Ug2kK2P3VM4VXCtdjjtNSmLUWNjNUXHdvHtRh4DN6haUUuL6rnyQD/8iTep/6S10ZFxLhAduPzMkzfdDxX/sR2w7/DXPQK/2uxE1Orznw6JfQhlLjTjBq1S/ZvDq1rXo6X9Jn/0QtLs4HvUP+Gkf/71dFplmYkDw99L25AZwAQB/QtcaO/zT0r5eY+/Fu3jWee/8rx+EutoztomAFzuAUv+xzE1bHg4YAAA=') center/cover;border:1px solid #ffffffac}
+.roomname{flex:1;min-width:0;font-size:13px;font-weight:700}.roomname small{display:block;color:#e0d9dc;font-size:10px;font-weight:400}
+.pill{font-size:12px;white-space:nowrap;padding:6px 9px;border:0;border-radius:18px;background:#ffffff26}.follow{background:var(--pink)}
+.icon{border:0;background:transparent;font-size:22px;min-width:32px;min-height:36px;line-height:1;padding:0}
+.notice{padding:7px 16px;font-size:11px;color:#eee0e7;text-shadow:0 1px 4px black}.pink{color:#ff79a7}
+.hostArea,.presale{position:absolute;inset:132px 14px auto}
+.roomcard{border:1px solid #ff8bb05e;background:#291724ee;border-radius:14px;padding:11px 12px;box-shadow:0 8px 24px #12071340}
+.cardtop{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cardtop strong{font-size:14px}
+.clock{font-size:17px;font-weight:780;color:#ffc1d7;font-variant-numeric:tabular-nums;letter-spacing:.06em;white-space:nowrap}
+.roomcard p{font-size:12px;line-height:1.55;color:#f9e1ec;margin:4px 0 8px}
+.cardbottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-size:21px;line-height:1;font-weight:800;color:#ffc0d6}
+.hot,.ghost,.confirm{border:0;border-radius:11px;font-weight:700;min-height:44px;padding:8px 14px}
+.hot,.confirm{background:var(--pink);color:white}.ghost{background:#eee;color:#262329}
+.roomcard button.minor{border:1px solid #ffffff30;background:#ffffff10;border-radius:9px;min-height:36px;padding:5px 9px;font-size:12px}
+.card-controls{display:flex;align-items:center;flex:none;gap:6px}
+.collapse{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:44px;min-width:65px;padding:0 3px;font-size:12px;border:0;background:transparent;color:#ffc5d8}
+.toggle-icon{display:inline-grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:#ffb5d21a;color:#ffd5e5}
+.toggle-icon svg{display:block;width:14px;height:14px}
+.toggle-icon.up svg{transform:rotate(180deg)}
+@media(hover:hover){.collapse:hover .toggle-icon,.collapsed:hover .toggle-icon{background:#ffb5d235}}
+.collapsed{border:1px solid #ff8bb05e;border-radius:22px;min-height:44px;padding:0 12px;background:#291724f5;display:flex;align-items:center;gap:10px}
+.paidflag{background:#3a82532e;border:1px solid #a4e4bb50;color:#caf3d9;border-radius:8px;font-size:12px;padding:6px 9px}
+.banner{background:#ae285aaf;text-align:center;border-radius:7px;padding:8px 9px;font-size:12px}
+.chat{position:absolute;left:15px;bottom:92px;color:#f7e7ebd9;text-shadow:0 1px 5px #000;font-size:13px;line-height:1.8}
+.chat p{margin:0}.chat p:last-child{color:#f5bfdb}
+.toolbar{position:absolute;inset:auto 14px 35px;display:flex;align-items:center;gap:4px}
+.chatbox{background:#141218a8;border-radius:21px;flex:1;padding:0 12px;color:#ddd7dc;min-height:39px;display:flex;align-items:center;font-size:12px}
+.homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:4px;background:white;pointer-events:none;z-index:9}
+.layer{position:absolute;inset:0;display:grid;place-items:center;padding:14px;background:#08050b99;z-index:4}
+.layer[hidden],.toast[hidden], [hidden]{display:none!important}
+.dialog{width:min(300px,100%);max-height:95%;overflow:auto;border-radius:19px;padding:22px 14px 14px;background:radial-gradient(ellipse 88% 90px at 87% 0,#ffa6b5 0%,#ffefed 60%,white 100%);color:#201d23;box-shadow:0 14px 36px #110b1660}
+.dialog h2{font-size:17px;line-height:1.4;text-align:center;margin:0 0 5px}
+.dialog .sub{font-size:12px;color:#665d67;line-height:1.6;text-align:center;margin:0 0 14px}
+.dialog .avatar{width:62px;height:62px;margin:0 auto 10px}
+.dialog .tag{font-size:12px;text-align:center;background:#fce8f0;color:#b71552;border-radius:5px;padding:6px;margin:9px 0}
+.dialog label{display:block;margin:11px 0 5px;font-size:13px;font-weight:650}
+.dialog input,.dialog select{width:100%;height:45px;border:1px solid #ded4dc;border-radius:9px;background:#fff;color:#211d23;padding:0 12px;color-scheme:light}
+.dialog input[aria-invalid=true],.dialog select[aria-invalid=true]{border-color:#d51d5e}
+.error{display:block;color:#bd144a;font-size:12px;margin:5px 0 0}
+.actions{display:flex;gap:8px;margin-top:16px}.actions button{flex:1;padding-inline:7px;font-size:13px}
+.choice{width:100%;border:1px solid #f2c4d4;background:#fff8fb;color:#8a1b46;border-radius:10px;min-height:44px;margin-top:8px;font-weight:700}
+.pick{width:100%}.dialog .amount{font-weight:800;color:#d91a60;text-align:center;font-size:30px;margin:4px 0 7px;line-height:1.2}
+.toast{position:absolute;z-index:7;top:112px;inset-inline:14px;padding:10px;border-radius:9px;background:#8e2150;color:white;text-align:center;font-size:13px;box-shadow:0 7px 20px #09060870}
+.spinner{display:block;width:30px;height:30px;border-radius:50%;border:3px solid #f7d9e5;border-top-color:#df226a;margin:3px auto 12px;animation:spin 850ms linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.detail{display:grid;grid-template-columns:1fr auto;gap:6px 8px;padding:8px 0;margin:0;font-size:13px}
+.detail div{display:contents}.detail dt{color:#685d66}.detail dd{font-weight:650;margin:0;text-align:right}
+@media(max-width:1060px){.layout{gap:22px;padding-inline:24px}.masthead{padding-inline:24px}}
+@media(max-width:880px){.layout{grid-template-columns:minmax(180px,1fr) minmax(0,405px);max-width:710px}}
+@media(max-width:620px){.masthead{padding:12px 16px}.layout{padding:16px max(10px,env(safe-area-inset-left)) 24px;grid-template-columns:minmax(0,1fr);gap:16px;max-width:445px}.intro{padding:0 6px;display:contents}.intro .title{grid-row:1;padding:0 6px}.title h1{font-size:29px;margin:0}.title .eyebrow,.title p{display:none}.intro .panel{grid-row:3;margin-top:0}.preview{grid-row:2}.phone{height:auto;aspect-ratio:393/852;border-radius:30px}}
+@media(max-width:360px){.roomhead{gap:5px;padding-inline:8px}.hostArea,.presale{inset-inline:8px}.roomname{font-size:12px}.roomcard{padding-inline:9px}.clock{font-size:15px}.masthead{padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){.spinner{animation:none}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="brand"><span class="mark" aria-hidden="true">51</span>嗨聊</div>
+  <span class="device">iPhone 16 · 393 × 852 pt</span>
+</header>
+<main class="layout">
+  <section class="intro">
+    <div class="title">
+      <div class="eyebrow">直播间交互原型</div>
+      <h1>免费直播间<br>门票预售</h1>
+      <p style="color:var(--muted);margin:0">主播开启预售，观众可边看边买票。倒计时结束后，直播间自动转为门票房。</p>
+    </div>
+    <section class="panel">
+      <h2>场景选择</h2>
+      <div id="scenarios" class="scenarios">
+        <button type="button" data-scene="hostFree">主播 · 发起预售</button>
+        <button type="button" data-scene="hostSale">主播 · 预售中</button>
+        <button type="button" data-scene="viewerFree">观众 · 预售中未购票</button>
+        <button type="button" data-scene="viewerBought">观众 · 预售中已购票</button>
+        <button type="button" data-scene="viewerBlocked">观众 · 门票房拦截</button>
+        <button type="button" data-scene="viewerPending">观众 · 切房时支付确认</button>
+        <button type="button" data-scene="ended">观众 · 直播结束查订单</button>
+      </div>
+    </section>
+  </section>
+  <section class="preview" aria-label="直播间预览">
+      <div id="phone" class="phone">
+      <div id="video" class="video" aria-hidden="true"></div>
+      <div class="shade" aria-hidden="true"></div>
+      <div class="status" aria-hidden="true"><span>9:41</span><span class="signal"><i></i><span class="wifi"><b></b></span><span class="battery"></span></span></div>
+      <div class="island" aria-hidden="true"></div>
+      <div id="roomUi">
+        <div class="roomhead">
+          <span class="avatar" aria-hidden="true"></span>
+          <span class="roomname">小佳的多人直播间<small>999获赞</small></span>
+          <button class="pill follow" type="button" data-action="follow">已关注</button>
+          <span class="pill">99人</span>
+          <button class="icon" type="button" data-action="closeRoom" aria-label="关闭直播间">×</button>
+        </div>
+        <div class="notice"><span class="pink">▂▅▃</span> 直播中 · 欢迎各位大哥来看我</div>
+        <div id="inRoom"></div>
+        <div class="chat"><p>欢迎进入直播间</p><p>小星星 进入直播间</p><p>大大泡泡糖：晚上好</p></div>
+        <div class="toolbar">
+          <span class="chatbox">说点什么…</span>
+          <button type="button" class="icon" data-action="like" aria-label="点赞">♡</button>
+          <button type="button" class="icon" data-action="share" aria-label="分享">↗</button>
+          <button id="more" type="button" class="icon" data-action="more" aria-label="更多操作">···</button>
+        </div>
+      </div>
+      <div id="layer" class="layer" hidden></div>
+      <div id="toast" class="toast" role="status" hidden></div>
+      <div class="homebar" aria-hidden="true"></div>
+    </div>
+  </section>
+</main>
+<script>
+const byId = id => document.getElementById(id);
+const scenes = {
+  hostFree: { role: 'host', phase: 'free', modal: 'upgrade' },
+  hostSale: { role: 'host', phase: 'sale', otherSales: 3 },
+  viewerFree: { role: 'viewer', phase: 'sale' },
+  viewerBought: { role: 'viewer', phase: 'sale', order: 'paid' },
+  viewerBlocked: { role: 'viewer', phase: 'paid' },
+  viewerPending: { role: 'viewer', phase: 'paid', order: 'pending' },
+  ended: { role: 'viewer', phase: 'ended', order: 'paid' }
+};
+let state;
+let toastTimeout;
+let opener;
+const money = amount => '¥' + Number(amount).toFixed(2).replace(/\.00$/, '');
+const isLocked = () => state.otherSales > 0 || ['pending','paid'].includes(state.order);
+const remaining = () => Math.max(0, Math.ceil((state.deadline - Date.now()) / 1000));
+function clock() {
+  const seconds = remaining();
+  return [Math.floor(seconds / 60), seconds % 60].map(n => String(n).padStart(2, '0')).join(':');
+}
+function button(label, action, css = '') {
+  return '<button type="button" class="' + css + '" data-action="' + action + '">' + label + '</button>';
+}
+function detail(label, value) {
+  return '<div><dt>' + label + '</dt><dd>' + value + '</dd></div>';
+}
+function timer() {
+  return '<span class="clock" data-clock>' + clock() + '</span>';
+}
+function setScene(key) {
+  const scene = scenes[key];
+  state = {
+    scene: key, role: scene.role, phase: scene.phase, order: scene.order || 'none',
+    otherSales: scene.otherSales || 0, deadline: Date.now() + 5 * 60_000, price: 20,
+    orderPrice: 20, payAt: scene.order === 'pending' ? Date.now() + 8000 : null, dismissed: false, collapsed: false, follow: true,
+    liked: false, modal: scene.modal || null
+  };
+  clearTimeout(toastTimeout);
+  byId('toast').hidden = true;
+  opener = null;
+  render();
+}
+function showToast(label) {
+  const toast = byId('toast');
+  toast.textContent = label;
+  toast.hidden = false;
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.hidden = true, 4200);
+}
+function openModal(name) {
+  opener = document.activeElement;
+  state.modal = name;
+  render();
+  if (name !== 'presaleForm' && name !== 'directForm' && name !== 'editPrice') {
+    byId('layer').querySelector('.dialog')?.focus();
+  } else {
+    byId('priceInput').focus();
+  }
+}
+function closeModal() {
+  state.modal = null;
+  render();
+  if (opener?.isConnected) opener.focus();
+}
+function toggleIcon(pointsUp = false) {
+  return '<span class="toggle-icon' + (pointsUp ? ' up' : '') + '" aria-hidden="true">' +
+    '<svg viewBox="0 0 16 16" fill="none" focusable="false">' +
+    '<path d="M4.25 6.5 8 10l3.75-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg></span>';
+}
+function roomContent() {
+  if (state.phase === 'free' && state.role === 'host') {
+    return '<div class="hostArea">' + button('升级为付费房', 'upgrade', 'hot') + '</div>';
+  }
+  if (state.phase === 'paid') {
+    const label = state.role === 'host' ? '付费直播中' : '本场为付费直播 · 已购票';
+    return '<div class="hostArea banner"><span aria-hidden="true">🎟 </span>' + label + '　门票 ' + money(state.price) + '</div>';
+  }
+  if (state.phase !== 'sale') return '';
+  if (state.role === 'host') {
+    const sales = state.otherSales + Number(state.order === 'paid');
+    return '<div class="hostArea roomcard">' +
+      '<div class="cardtop"><strong>门票预售中</strong>' + timer() + '</div>' +
+      '<p>门票 ' + money(state.price) + ' · 已售 ' + sales + ' 张' +
+      (sales ? ' · 票价已锁定' : state.order === 'pending' ? ' · 支付确认中' : '') + '</p>' +
+      '<div class="cardbottom">' + (isLocked() ? '<span></span>' : button('修改票价', 'editPrice', 'minor')) +
+      button('提前开启付费直播', 'early', 'minor') + '</div></div>';
+  }
+  if (state.collapsed) {
+    return '<div class="presale"><button class="collapsed" type="button" data-action="expand" aria-expanded="false" aria-label="展开门票预售卡片">' +
+      '<span>门票预售' + (state.order === 'paid' ? ' · 已购票' : '') + '</span>' + timer() + toggleIcon() + '</button></div>';
+  }
+  const status = state.order === 'paid' ? '<span class="paidflag">已购票</span>' :
+    state.order === 'pending' ? '<button class="hot" type="button" disabled>正在确认购票结果</button>' :
+      button('立即购票', 'buy', 'hot');
+  return '<div class="presale roomcard"><div class="cardtop"><strong>付费直播门票预售</strong>' +
+    '<div class="card-controls">' + timer() +
+    '<button type="button" class="collapse" data-action="collapse" aria-expanded="true">收起' +
+    toggleIcon(true) + '</button></div></div>' +
+    '<p>当前可免费观看，倒计时结束后凭票继续观看</p>' +
+    '<div class="cardbottom"><span class="price">' + money(state.price) + '</span>' + status + '</div></div>';
+}
+function dialog(title, body, actions = '') {
+  return '<div class="dialog" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="dialog-title">' +
+    '<h2 id="dialog-title">' + title + '</h2>' + body + (actions ? '<div class="actions">' + actions + '</div>' : '') + '</div>';
+}
+const sub = words => '<p class="sub">' + words + '</p>';
+const cancel = () => button('取消', 'cancel', 'ghost');
+function form(name) {
+  const isSale = name === 'presaleForm';
+  const edit = name === 'editPrice';
+  const title = isSale ? '先预售门票' : edit ? '修改票价' : '升级付费房';
+  const label = isSale ? '开启预售' : edit ? '保存票价' : '确认升级';
+  const help = isSale ? '预售期间可免费观看，倒计时结束后自动进入门票房' :
+    edit ? '首张门票售出后，票价将锁定' : '设置本场门票价格，升级后不可修改';
+  return dialog(title, sub(help) + '<form id="ticketForm" data-form="' + name + '" novalidate>' +
+    '<label for="priceInput">门票价格（元）</label>' +
+    '<input id="priceInput" required inputmode="decimal" maxlength="6" autocomplete="off" aria-describedby="priceError" placeholder="请输入门票价格" value="' +
+    (edit ? state.price : '') + '"><span class="error" id="priceError" role="alert" hidden></span>' +
+    (isSale ? '<label for="durationInput">预售时长</label><select id="durationInput" required aria-describedby="durationError">' +
+    '<option value="">请选择预售时长</option><option value="15">15 秒（快速演示）</option><option value="60">1 分钟</option><option value="180">3 分钟</option><option value="300">5 分钟</option><option value="600">10 分钟</option>' +
+    '</select><span class="error" id="durationError" role="alert" hidden></span>' : '') +
+    '<div class="actions">' + (edit ? cancel() : button('返回', 'upgrade', 'ghost')) + '<button class="confirm" type="submit">' + label + '</button></div></form>');
+}
+function activeDialog() {
+  if (state.dismissed) {
+    return dialog('已退出直播间', sub('重新进入时会刷新直播间和门票状态。'), button('重新进房', 'join', 'confirm'));
+  }
+  if (state.phase === 'ended') {
+    if (state.modal === 'order' && state.role === 'viewer' && state.order === 'paid') {
+      return dialog('门票订单', '<dl class="detail">' + detail('直播间', '小佳的多人直播间') +
+        detail('支付金额', money(state.orderPrice)) + detail('支付状态', '已支付') + detail('场次状态', '直播已结束') + '</dl>',
+        button('返回', 'cancel', 'ghost'));
+    }
+    const message = state.role === 'viewer' && state.order === 'pending' ? '正在确认购票结果…' : '感谢观看本场直播。';
+    const orderButton = state.role === 'viewer' && state.order === 'paid' ? button('查看订单状态', 'order', 'confirm') : '';
+    return dialog('直播已结束', sub(message), orderButton);
+  }
+  if (state.role === 'viewer' && state.phase === 'paid' && state.order === 'pending') {
+    return dialog('正在确认购票结果', '<span class="spinner" aria-hidden="true"></span>' +
+      sub('支付确认成功后将自动恢复观看。'), button('退出直播间', 'leave', 'ghost'));
+  }
+  if (state.role === 'viewer' && (state.modal === 'buy' || (state.phase === 'paid' && state.order !== 'paid'))) {
+    const presale = state.phase === 'sale';
+    return dialog('小佳的多人直播间', '<span class="avatar" aria-hidden="true"></span><div class="tag">' +
+      (presale ? '付费直播门票预售' : '主播已升级为付费直播') + '</div>' +
+      sub(presale ? '当前可免费观看，倒计时结束后凭票继续观看' : '购买本场门票，继续观看精彩直播') +
+      '<div class="amount">' + money(state.price) + '</div>' + sub('本场有效 · 权益有效时间可再次进入<br>购票成功后不支持退票'),
+      (presale ? cancel() : button('取消', 'leave', 'ghost')) + button('确认购票', 'pay', 'confirm'));
+  }
+  switch (state.modal) {
+    case 'upgrade':
+      return dialog('升级为付费房', sub('选择开启付费直播的方式。') +
+        button('先预售门票', 'presaleForm', 'confirm pick') +
+        button('直接开启付费直播', 'directForm', 'choice'),
+        cancel());
+    case 'presaleForm':
+    case 'directForm':
+    case 'editPrice':
+      return form(state.modal);
+    case 'early':
+      return dialog('提前开启付费直播？', sub('提前开启后，未购票观众需购票才能继续观看'),
+        cancel() + button('确认提前开启', 'forcePaid', 'confirm'));
+    case 'hostMore': {
+      const launch = state.phase === 'free' ? button('升级为付费房', 'upgrade', 'choice') : '';
+      return dialog('主播操作', launch + button('结束直播', 'endConfirm', 'choice'), cancel());
+    }
+    case 'viewerMore':
+      return dialog('直播间操作', button('退出直播间', 'leave', 'choice'), cancel());
+    case 'endConfirm':
+      return dialog('结束本场直播？', sub('结束后，已购票观众可查看订单状态。'),
+        cancel() + button('确认结束直播', 'end', 'confirm'));
+    default:
+      return '';
+  }
+}
+function updateCountdown() {
+  const time = clock();
+  document.querySelectorAll('[data-clock]').forEach(element => { element.textContent = time; });
+}
+function render() {
+  document.querySelectorAll('[data-scene]').forEach(item => item.setAttribute('aria-pressed', item.dataset.scene === state.scene));
+  const blocked = state.dismissed || state.phase === 'ended' || (state.phase === 'paid' && state.role === 'viewer' && state.order !== 'paid');
+  byId('video').classList.toggle('blocked', blocked);
+  byId('roomUi').hidden = blocked;
+  byId('inRoom').innerHTML = roomContent();
+  document.querySelector('[data-action="follow"]').textContent = state.follow ? '已关注' : '关注';
+  document.querySelector('[data-action="like"]').textContent = state.liked ? '♥' : '♡';
+  const content = activeDialog();
+  byId('layer').innerHTML = content;
+  byId('layer').hidden = !content;
+  byId('roomUi').inert = Boolean(content);
+  updateCountdown();
+}
+function becomePaid() {
+  state.phase = 'paid';
+  state.modal = null;
+  state.collapsed = false;
+  render();
+  if (state.role === 'viewer' && state.order === 'paid' && !state.dismissed) showToast('门票房已开启，可继续观看');
+}
+function completePayment() {
+  if (state.order !== 'pending') return;
+  state.order = 'paid';
+  state.payAt = null;
+  render();
+  if (state.role !== 'viewer' || state.dismissed) return;
+  if (state.phase === 'sale') {
+    showToast('购票成功，倒计时结束后可继续观看');
+  } else if (state.phase === 'paid') {
+    showToast('购票成功，已恢复观看');
+  } else if (state.phase === 'ended') {
+    showToast('购票结果已确认，可查看订单状态');
+  }
+}
+function tick() {
+  if (state.phase === 'sale' && Date.now() >= state.deadline) becomePaid();
+  if (state.order === 'pending' && state.payAt !== null && Date.now() >= state.payAt) completePayment();
+  updateCountdown();
+}
+function clearToast() {
+  clearTimeout(toastTimeout);
+  byId('toast').hidden = true;
+}
+function join() {
+  clearToast();
+  state.role = 'viewer';
+  state.dismissed = false;
+  state.collapsed = false;
+  state.modal = null;
+  tick();
+  render();
+}
+const actions = {
+  upgrade: () => openModal('upgrade'),
+  presaleForm: () => openModal('presaleForm'),
+  directForm: () => openModal('directForm'),
+  editPrice: () => { if (!isLocked()) openModal('editPrice'); },
+  early: () => openModal('early'),
+  cancel: closeModal,
+  forcePaid: () => { if (state.phase === 'sale') becomePaid(); },
+  collapse: () => { state.collapsed = true; render(); byId('inRoom').querySelector('button')?.focus(); },
+  expand: () => { state.collapsed = false; render(); byId('inRoom').querySelector('button')?.focus(); },
+  buy: () => { if (state.order !== 'pending' && state.order !== 'paid') openModal('buy'); },
+  pay: () => {
+    if (!['sale', 'paid'].includes(state.phase) || ['pending', 'paid'].includes(state.order)) return;
+    state.order = 'pending';
+    state.orderPrice = state.price;
+    state.payAt = Date.now() + 8000;
+    state.modal = null;
+    render();
+    if (state.phase === 'sale') showToast('正在确认购票结果');
+  },
+  join,
+  leave: () => { clearToast(); state.dismissed = true; state.modal = null; render(); },
+  closeRoom: () => { if (state.role === 'host') openModal('endConfirm'); else actions.leave(); },
+  more: () => openModal(state.role === 'host' ? 'hostMore' : 'viewerMore'),
+  endConfirm: () => openModal('endConfirm'),
+  end: () => { clearToast(); state.phase = 'ended'; state.modal = null; state.dismissed = false; render(); },
+  order: () => openModal('order'),
+  follow: event => {
+    state.follow = !state.follow;
+    event.textContent = state.follow ? '已关注' : '关注';
+  },
+  like: event => {
+    state.liked = !state.liked;
+    event.textContent = state.liked ? '♥' : '♡';
+  },
+  share: () => showToast('已打开分享入口（演示）')
+};
+document.addEventListener('click', event => {
+  const control = event.target.closest('button');
+  if (!control) return;
+  if (control.dataset.scene) {
+    setScene(control.dataset.scene);
+  } else {
+    actions[control.dataset.action]?.(control);
+  }
+});
+function fieldError(input, error, message) {
+  const text = byId(error);
+  text.textContent = message;
+  text.hidden = !message;
+  input.setAttribute('aria-invalid', Boolean(message));
+}
+document.addEventListener('input', event => {
+  if (event.target.id === 'priceInput') fieldError(event.target, 'priceError', '');
+  if (event.target.id === 'durationInput') fieldError(event.target, 'durationError', '');
+});
+document.addEventListener('submit', event => {
+  const form = event.target;
+  if (form.id !== 'ticketForm') return;
+  event.preventDefault();
+  const kind = form.dataset.form;
+  const input = byId('priceInput');
+  const duration = byId('durationInput');
+  const raw = input.value.trim();
+  const value = Number(raw);
+  const validPrice = /^\d{1,3}(\.\d{1,2})?$/.test(raw) && value >= 1 && value <= 999;
+  const validDuration = !duration || ['15', '60', '180', '300', '600'].includes(duration.value);
+  fieldError(input, 'priceError', validPrice ? '' : '请输入 ¥1–999 的门票金额，最多两位小数');
+  if (duration) fieldError(duration, 'durationError', validDuration ? '' : '请选择预售时长');
+  if (!validPrice || !validDuration) {
+    (validPrice ? duration : input).focus();
+    return;
+  }
+  if (kind === 'editPrice' && (state.phase !== 'sale' || isLocked())) return;
+  if (kind !== 'editPrice' && state.phase !== 'free') return;
+  state.price = value;
+  state.modal = null;
+  if (kind === 'directForm') {
+    becomePaid();
+  } else if (kind === 'presaleForm') {
+    state.phase = 'sale';
+    state.deadline = Date.now() + Number(duration.value) * 1000;
+    state.collapsed = false;
+    render();
+  } else {
+    render();
+  }
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && state.modal) {
+    event.preventDefault();
+    closeModal();
+  }
+});
+setScene('hostFree');
+setInterval(tick, 250);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
+</script>
+</body>
+</html>
